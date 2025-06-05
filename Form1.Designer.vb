@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class FrmGeneralLedgerApp
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,95 +22,269 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtBranchID = New System.Windows.Forms.TextBox()
+        Me.txtDepartmentID = New System.Windows.Forms.TextBox()
+        Me.txtLedgerID = New System.Windows.Forms.TextBox()
+        Me.txtCostCenterID = New System.Windows.Forms.TextBox()
+        Me.txtDebit = New System.Windows.Forms.TextBox()
+        Me.txtCredit = New System.Windows.Forms.TextBox()
+        Me.txtCreatedBy = New System.Windows.Forms.TextBox()
+        Me.btnAddJournal = New System.Windows.Forms.Button()
+        Me.btnApproveJournal = New System.Windows.Forms.Button()
+        Me.btnRejectJournal = New System.Windows.Forms.Button()
+        Me.btnReverseJournal = New System.Windows.Forms.Button()
+        Me.btnPostJournal = New System.Windows.Forms.Button()
+        Me.dgvJournalEntries = New System.Windows.Forms.DataGridView()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.dgvJournalEntries, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'Panel1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(188, 26)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(76, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.Panel1.Location = New System.Drawing.Point(12, 42)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(171, 179)
+        Me.Panel1.TabIndex = 8
         '
-        'TextBox2
+        'GroupBox1
         '
-        Me.TextBox2.Location = New System.Drawing.Point(71, 128)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(76, 20)
-        Me.TextBox2.TabIndex = 1
+        Me.GroupBox1.Controls.Add(Me.txtCreatedBy)
+        Me.GroupBox1.Controls.Add(Me.txtCredit)
+        Me.GroupBox1.Controls.Add(Me.txtDebit)
+        Me.GroupBox1.Controls.Add(Me.txtCostCenterID)
+        Me.GroupBox1.Controls.Add(Me.txtLedgerID)
+        Me.GroupBox1.Controls.Add(Me.txtDepartmentID)
+        Me.GroupBox1.Controls.Add(Me.txtBranchID)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Location = New System.Drawing.Point(189, 42)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(369, 200)
+        Me.GroupBox1.TabIndex = 9
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Data Journal Entry"
         '
-        'TextBox3
+        'Label1
         '
-        Me.TextBox3.Location = New System.Drawing.Point(71, 240)
-        Me.TextBox3.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(76, 20)
-        Me.TextBox3.TabIndex = 2
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(7, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(55, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Branch ID"
         '
-        'TextBox4
+        'Label2
         '
-        Me.TextBox4.Location = New System.Drawing.Point(71, 200)
-        Me.TextBox4.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(76, 20)
-        Me.TextBox4.TabIndex = 3
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 46)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(76, 13)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Department ID"
         '
-        'TextBox5
+        'Label3
         '
-        Me.TextBox5.Location = New System.Drawing.Point(95, 115)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(76, 20)
-        Me.TextBox5.TabIndex = 4
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(7, 72)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(54, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Ledger ID"
         '
-        'TextBox6
+        'Label4
         '
-        Me.TextBox6.Location = New System.Drawing.Point(71, 163)
-        Me.TextBox6.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(76, 20)
-        Me.TextBox6.TabIndex = 5
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(7, 98)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(76, 13)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Cost Center ID"
         '
-        'TextBox7
+        'Label5
         '
-        Me.TextBox7.Location = New System.Drawing.Point(71, 61)
-        Me.TextBox7.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(76, 20)
-        Me.TextBox7.TabIndex = 6
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(7, 124)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(32, 13)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Debit"
         '
-        'Form1
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(7, 150)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(34, 13)
+        Me.Label6.TabIndex = 5
+        Me.Label6.Text = "Credit"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(7, 176)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(59, 13)
+        Me.Label7.TabIndex = 6
+        Me.Label7.Text = "Created By"
+        '
+        'txtBranchID
+        '
+        Me.txtBranchID.Location = New System.Drawing.Point(132, 17)
+        Me.txtBranchID.Name = "txtBranchID"
+        Me.txtBranchID.Size = New System.Drawing.Size(201, 20)
+        Me.txtBranchID.TabIndex = 7
+        '
+        'txtDepartmentID
+        '
+        Me.txtDepartmentID.Location = New System.Drawing.Point(132, 43)
+        Me.txtDepartmentID.Name = "txtDepartmentID"
+        Me.txtDepartmentID.Size = New System.Drawing.Size(201, 20)
+        Me.txtDepartmentID.TabIndex = 8
+        '
+        'txtLedgerID
+        '
+        Me.txtLedgerID.Location = New System.Drawing.Point(132, 69)
+        Me.txtLedgerID.Name = "txtLedgerID"
+        Me.txtLedgerID.Size = New System.Drawing.Size(201, 20)
+        Me.txtLedgerID.TabIndex = 9
+        '
+        'txtCostCenterID
+        '
+        Me.txtCostCenterID.Location = New System.Drawing.Point(132, 95)
+        Me.txtCostCenterID.Name = "txtCostCenterID"
+        Me.txtCostCenterID.Size = New System.Drawing.Size(201, 20)
+        Me.txtCostCenterID.TabIndex = 10
+        '
+        'txtDebit
+        '
+        Me.txtDebit.Location = New System.Drawing.Point(132, 121)
+        Me.txtDebit.Name = "txtDebit"
+        Me.txtDebit.Size = New System.Drawing.Size(201, 20)
+        Me.txtDebit.TabIndex = 11
+        '
+        'txtCredit
+        '
+        Me.txtCredit.Location = New System.Drawing.Point(132, 147)
+        Me.txtCredit.Name = "txtCredit"
+        Me.txtCredit.Size = New System.Drawing.Size(201, 20)
+        Me.txtCredit.TabIndex = 12
+        '
+        'txtCreatedBy
+        '
+        Me.txtCreatedBy.Location = New System.Drawing.Point(132, 173)
+        Me.txtCreatedBy.Name = "txtCreatedBy"
+        Me.txtCreatedBy.Size = New System.Drawing.Size(201, 20)
+        Me.txtCreatedBy.TabIndex = 13
+        '
+        'btnAddJournal
+        '
+        Me.btnAddJournal.Location = New System.Drawing.Point(198, 249)
+        Me.btnAddJournal.Name = "btnAddJournal"
+        Me.btnAddJournal.Size = New System.Drawing.Size(84, 23)
+        Me.btnAddJournal.TabIndex = 10
+        Me.btnAddJournal.Text = "Add Journal"
+        Me.btnAddJournal.UseVisualStyleBackColor = True
+        '
+        'btnApproveJournal
+        '
+        Me.btnApproveJournal.Location = New System.Drawing.Point(321, 249)
+        Me.btnApproveJournal.Name = "btnApproveJournal"
+        Me.btnApproveJournal.Size = New System.Drawing.Size(98, 23)
+        Me.btnApproveJournal.TabIndex = 11
+        Me.btnApproveJournal.Text = "Approve Journal"
+        Me.btnApproveJournal.UseVisualStyleBackColor = True
+        '
+        'btnRejectJournal
+        '
+        Me.btnRejectJournal.Location = New System.Drawing.Point(447, 249)
+        Me.btnRejectJournal.Name = "btnRejectJournal"
+        Me.btnRejectJournal.Size = New System.Drawing.Size(85, 23)
+        Me.btnRejectJournal.TabIndex = 12
+        Me.btnRejectJournal.Text = "Reject Journal"
+        Me.btnRejectJournal.UseVisualStyleBackColor = True
+        '
+        'btnReverseJournal
+        '
+        Me.btnReverseJournal.Location = New System.Drawing.Point(257, 278)
+        Me.btnReverseJournal.Name = "btnReverseJournal"
+        Me.btnReverseJournal.Size = New System.Drawing.Size(93, 23)
+        Me.btnReverseJournal.TabIndex = 13
+        Me.btnReverseJournal.Text = "Reverse Journal"
+        Me.btnReverseJournal.UseVisualStyleBackColor = True
+        '
+        'btnPostJournal
+        '
+        Me.btnPostJournal.Location = New System.Drawing.Point(395, 278)
+        Me.btnPostJournal.Name = "btnPostJournal"
+        Me.btnPostJournal.Size = New System.Drawing.Size(75, 23)
+        Me.btnPostJournal.TabIndex = 14
+        Me.btnPostJournal.Text = "Post Journal"
+        Me.btnPostJournal.UseVisualStyleBackColor = True
+        '
+        'dgvJournalEntries
+        '
+        Me.dgvJournalEntries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvJournalEntries.Location = New System.Drawing.Point(12, 318)
+        Me.dgvJournalEntries.Name = "dgvJournalEntries"
+        Me.dgvJournalEntries.Size = New System.Drawing.Size(546, 155)
+        Me.dgvJournalEntries.TabIndex = 15
+        '
+        'FrmGeneralLedgerApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(600, 366)
-        Me.Controls.Add(Me.TextBox7)
-        Me.Controls.Add(Me.TextBox6)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.ClientSize = New System.Drawing.Size(570, 485)
+        Me.Controls.Add(Me.dgvJournalEntries)
+        Me.Controls.Add(Me.btnPostJournal)
+        Me.Controls.Add(Me.btnReverseJournal)
+        Me.Controls.Add(Me.btnRejectJournal)
+        Me.Controls.Add(Me.btnApproveJournal)
+        Me.Controls.Add(Me.btnAddJournal)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Panel1)
         Me.Margin = New System.Windows.Forms.Padding(2)
-        Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Name = "FrmGeneralLedgerApp"
+        Me.Text = "General Ledger App"
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.dgvJournalEntries, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtCreatedBy As TextBox
+    Friend WithEvents txtCredit As TextBox
+    Friend WithEvents txtDebit As TextBox
+    Friend WithEvents txtCostCenterID As TextBox
+    Friend WithEvents txtLedgerID As TextBox
+    Friend WithEvents txtDepartmentID As TextBox
+    Friend WithEvents txtBranchID As TextBox
+    Friend WithEvents btnAddJournal As Button
+    Friend WithEvents btnApproveJournal As Button
+    Friend WithEvents btnRejectJournal As Button
+    Friend WithEvents btnReverseJournal As Button
+    Friend WithEvents btnPostJournal As Button
+    Friend WithEvents dgvJournalEntries As DataGridView
 End Class
