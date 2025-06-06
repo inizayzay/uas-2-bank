@@ -24,20 +24,20 @@ Partial Class FrmGeneralLedgerApp
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtBranchID = New System.Windows.Forms.TextBox()
-        Me.txtDepartmentID = New System.Windows.Forms.TextBox()
-        Me.txtLedgerID = New System.Windows.Forms.TextBox()
-        Me.txtCostCenterID = New System.Windows.Forms.TextBox()
-        Me.txtDebit = New System.Windows.Forms.TextBox()
-        Me.txtCredit = New System.Windows.Forms.TextBox()
         Me.txtCreatedBy = New System.Windows.Forms.TextBox()
+        Me.txtCredit = New System.Windows.Forms.TextBox()
+        Me.txtDebit = New System.Windows.Forms.TextBox()
+        Me.txtCostCenterID = New System.Windows.Forms.TextBox()
+        Me.txtLedgerID = New System.Windows.Forms.TextBox()
+        Me.txtDepartmentID = New System.Windows.Forms.TextBox()
+        Me.txtBranchID = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.btnAddJournal = New System.Windows.Forms.Button()
         Me.btnApproveJournal = New System.Windows.Forms.Button()
         Me.btnRejectJournal = New System.Windows.Forms.Button()
@@ -78,59 +78,54 @@ Partial Class FrmGeneralLedgerApp
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Data Journal Entry"
         '
-        'Label1
+        'txtCreatedBy
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(7, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(55, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Branch ID"
+        Me.txtCreatedBy.Location = New System.Drawing.Point(132, 173)
+        Me.txtCreatedBy.Name = "txtCreatedBy"
+        Me.txtCreatedBy.Size = New System.Drawing.Size(201, 20)
+        Me.txtCreatedBy.TabIndex = 13
         '
-        'Label2
+        'txtCredit
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 46)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(76, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Department ID"
+        Me.txtCredit.Location = New System.Drawing.Point(132, 147)
+        Me.txtCredit.Name = "txtCredit"
+        Me.txtCredit.Size = New System.Drawing.Size(201, 20)
+        Me.txtCredit.TabIndex = 12
         '
-        'Label3
+        'txtDebit
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(7, 72)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(54, 13)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Ledger ID"
+        Me.txtDebit.Location = New System.Drawing.Point(132, 121)
+        Me.txtDebit.Name = "txtDebit"
+        Me.txtDebit.Size = New System.Drawing.Size(201, 20)
+        Me.txtDebit.TabIndex = 11
         '
-        'Label4
+        'txtCostCenterID
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 98)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(76, 13)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Cost Center ID"
+        Me.txtCostCenterID.Location = New System.Drawing.Point(132, 95)
+        Me.txtCostCenterID.Name = "txtCostCenterID"
+        Me.txtCostCenterID.Size = New System.Drawing.Size(201, 20)
+        Me.txtCostCenterID.TabIndex = 10
         '
-        'Label5
+        'txtLedgerID
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(7, 124)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(32, 13)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Debit"
+        Me.txtLedgerID.Location = New System.Drawing.Point(132, 69)
+        Me.txtLedgerID.Name = "txtLedgerID"
+        Me.txtLedgerID.Size = New System.Drawing.Size(201, 20)
+        Me.txtLedgerID.TabIndex = 9
         '
-        'Label6
+        'txtDepartmentID
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(7, 150)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(34, 13)
-        Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Credit"
+        Me.txtDepartmentID.Location = New System.Drawing.Point(132, 43)
+        Me.txtDepartmentID.Name = "txtDepartmentID"
+        Me.txtDepartmentID.Size = New System.Drawing.Size(201, 20)
+        Me.txtDepartmentID.TabIndex = 8
+        '
+        'txtBranchID
+        '
+        Me.txtBranchID.Location = New System.Drawing.Point(132, 17)
+        Me.txtBranchID.Name = "txtBranchID"
+        Me.txtBranchID.Size = New System.Drawing.Size(201, 20)
+        Me.txtBranchID.TabIndex = 7
         '
         'Label7
         '
@@ -141,54 +136,59 @@ Partial Class FrmGeneralLedgerApp
         Me.Label7.TabIndex = 6
         Me.Label7.Text = "Created By"
         '
-        'txtBranchID
+        'Label6
         '
-        Me.txtBranchID.Location = New System.Drawing.Point(132, 17)
-        Me.txtBranchID.Name = "txtBranchID"
-        Me.txtBranchID.Size = New System.Drawing.Size(201, 20)
-        Me.txtBranchID.TabIndex = 7
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(7, 150)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(34, 13)
+        Me.Label6.TabIndex = 5
+        Me.Label6.Text = "Credit"
         '
-        'txtDepartmentID
+        'Label5
         '
-        Me.txtDepartmentID.Location = New System.Drawing.Point(132, 43)
-        Me.txtDepartmentID.Name = "txtDepartmentID"
-        Me.txtDepartmentID.Size = New System.Drawing.Size(201, 20)
-        Me.txtDepartmentID.TabIndex = 8
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(7, 124)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(32, 13)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Debit"
         '
-        'txtLedgerID
+        'Label4
         '
-        Me.txtLedgerID.Location = New System.Drawing.Point(132, 69)
-        Me.txtLedgerID.Name = "txtLedgerID"
-        Me.txtLedgerID.Size = New System.Drawing.Size(201, 20)
-        Me.txtLedgerID.TabIndex = 9
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(7, 98)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(76, 13)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Cost Center ID"
         '
-        'txtCostCenterID
+        'Label3
         '
-        Me.txtCostCenterID.Location = New System.Drawing.Point(132, 95)
-        Me.txtCostCenterID.Name = "txtCostCenterID"
-        Me.txtCostCenterID.Size = New System.Drawing.Size(201, 20)
-        Me.txtCostCenterID.TabIndex = 10
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(7, 72)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(54, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Ledger ID"
         '
-        'txtDebit
+        'Label2
         '
-        Me.txtDebit.Location = New System.Drawing.Point(132, 121)
-        Me.txtDebit.Name = "txtDebit"
-        Me.txtDebit.Size = New System.Drawing.Size(201, 20)
-        Me.txtDebit.TabIndex = 11
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 46)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(76, 13)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Department ID"
         '
-        'txtCredit
+        'Label1
         '
-        Me.txtCredit.Location = New System.Drawing.Point(132, 147)
-        Me.txtCredit.Name = "txtCredit"
-        Me.txtCredit.Size = New System.Drawing.Size(201, 20)
-        Me.txtCredit.TabIndex = 12
-        '
-        'txtCreatedBy
-        '
-        Me.txtCreatedBy.Location = New System.Drawing.Point(132, 173)
-        Me.txtCreatedBy.Name = "txtCreatedBy"
-        Me.txtCreatedBy.Size = New System.Drawing.Size(201, 20)
-        Me.txtCreatedBy.TabIndex = 13
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(7, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(55, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Branch ID"
         '
         'btnAddJournal
         '
@@ -257,7 +257,10 @@ Partial Class FrmGeneralLedgerApp
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FrmGeneralLedgerApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "General Ledger App"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
