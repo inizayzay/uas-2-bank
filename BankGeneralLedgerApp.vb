@@ -1,14 +1,10 @@
-﻿Imports System
 Imports System.Data
-Imports System.Data.Common
-Imports System.Data.SqlClient
-Imports System.Windows.Forms
 Imports MySql.Data.MySqlClient
 
-Public Class FrmGeneralLedgerApp
+Public Class BankGeneralLedgerApp
     Inherits Form
 
-    ' Ganti connection string ini sesuai dengan konfigurasi MySQL/XAMPP kamu
+    ' Connection string – sesuaikan password dan detail MySQL Anda.
     Private connectionString As String = "server=localhost;user id=root;database=general_ledger_db;password=yourpassword;"
 
     ' Konrol di form sudah dibuat melalui Designer:
@@ -32,19 +28,18 @@ Public Class FrmGeneralLedgerApp
     Private Sub LoadJournalEntries()
         Dim query As String = "SELECT * FROM journal_entries ORDER BY created_at DESC"
         Using conn As New MySqlConnection(connectionString)
-            Try
                 conn.Open()
-                Dim adapter As New MySqlDataAdapter(query, conn)
-                Dim dt As New DataTable()
-                adapter.Fill(dt)
-                dgvJournalEntries.DataSource = dt
-            Catch ex As Exception
-                MessageBox.Show("Error mengambil data: " & ex.Message)
-            End Try
+            Dim query As String = "UPDATE branches SET branch_name = @branch_name, branch_address = @branch_address WHERE branch_id = @branch_id"
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@branch_name", txtBranchName.Text.Trim())
+                cmd.Parameters.AddWithValue("@branch_address", txtAlamat.Text.Trim())
+                cmd.Parameters.AddWithValue("@branch_id", branchID)
+                cmd.ExecuteNonQuery()
         End Using
     End Sub
 
     ' Event handler untuk tombol tambah transaksi (Add Journal)
+        dgvJournalEntri.DataSource = GetData(query)
     Private Sub btnAddJournal_Click(sender As Object, e As EventArgs) Handles btnAddJournal.Click
         ' Ambil input dari kontrol
         Dim transactionDate As DateTime = dtpPeriode.Value
