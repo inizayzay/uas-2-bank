@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
 Imports System.Windows.Forms.DataVisualization.Charting
+Imports System.Data.SqlClient
 
 Public Class BankGeneralLedgerApp
     Inherits Form
@@ -132,7 +133,46 @@ Public Class BankGeneralLedgerApp
     Private Sub LoadTransaksi()
         Dim query As String = "SELECT * FROM journal_entries WHERE status = 'NEW' ORDER BY created_at DESC"
         dgvTransaksi.DataSource = GetData(query)
+        Dim conn As New MySqlConnection(connectionString)
+        conn.Open()
+
+        ' --- Isi cbBranchID ---
+        Dim cmdBranch As New MySqlCommand("SELECT branch_id, branch_name FROM branches", conn)
+        Dim readerBranch As MySqlDataReader = cmdBranch.ExecuteReader()
+        cbBranchID.Items.Clear()
+        While readerBranch.Read()
+            cbBranchID.Items.Add(readerBranch("branch_id").ToString() & " - " & readerBranch("branch_name").ToString())
+        End While
+        readerBranch.Close()
+
+        ' --- Isi cbLedgerID ---
+        Dim cmdLedger As New MySqlCommand("SELECT ledger_id, account_name FROM ledger_accounts", conn)
+        Dim readerLedger As MySqlDataReader = cmdLedger.ExecuteReader()
+        cbLedgerID.Items.Clear()
+        While readerLedger.Read()
+            cbLedgerID.Items.Add(readerLedger("ledger_id").ToString() & " - " & readerLedger("account_name").ToString())
+        End While
+        readerLedger.Close()
+
+        ' --- Isi cbCostCenterID ---
+        Dim cmdCostCenter As New MySqlCommand("SELECT cost_center_id, cost_center_name FROM cost_centers", conn)
+        Dim readerCostCenter As MySqlDataReader = cmdCostCenter.ExecuteReader()
+        cbCostCenterID.Items.Clear()
+        While readerCostCenter.Read()
+            cbCostCenterID.Items.Add(readerCostCenter("cost_center_id").ToString() & " - " & readerCostCenter("cost_center_name").ToString())
+        End While
+        readerCostCenter.Close()
+
+        conn.Close()
+
+        conn.Close()
     End Sub
+
+
+
+
+
+
 
     ' Tambah transaksi melalui stored procedure sp_insert_bank_transaction
     Private Sub btnAddJournal_Click(sender As Object, e As EventArgs) Handles btnAddJournal.Click
@@ -145,15 +185,15 @@ Public Class BankGeneralLedgerApp
         Dim creditAmount As Decimal
         Dim createdBy As String = txtCreatedBy.Text.Trim()
 
-        If Not Integer.TryParse(txtTransaksiBranchID.Text, branchID) Then
+        If Not Integer.TryParse(cbBranchID.SelectedItem?.ToString(), branchID) Then
             MessageBox.Show("Branch ID tidak valid!")
             Exit Sub
         End If
-        If Not Integer.TryParse(txtLedgerID.Text, ledgerID) Then
+        If Not Integer.TryParse(cbLedgerID.Text, ledgerID) Then
             MessageBox.Show("Ledger ID tidak valid!")
             Exit Sub
         End If
-        If Not Integer.TryParse(txtCostCenterID.Text, costCenterID) Then
+        If Not Integer.TryParse(cbCostCenterID.SelectedItem?.ToString(), costCenterID) Then
             MessageBox.Show("Cost Center ID tidak valid!")
             Exit Sub
         End If
@@ -291,4 +331,11 @@ Public Class BankGeneralLedgerApp
         End Using
     End Sub
 
+    Private Sub cbtTransaksiBranchID_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbBranchID.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub cbLedgerID_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLedgerID.SelectedIndexChanged
+
+    End Sub
 End Class

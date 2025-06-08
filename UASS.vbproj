@@ -156,6 +156,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>BankGeneralLedgerApp.vb</DependentUpon>
     </EmbeddedResource> -->
+    <EmbeddedResource Include="BankGeneralLedgerApp.resx">
+      <DependentUpon>BankGeneralLedgerApp.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
