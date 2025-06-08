@@ -17,7 +17,7 @@ Public Class BankGeneralLedgerApp
         LoadDataJurnal()
         LoadTransaksi()
         LoadLaporan()
-        LoadMasterCostCentre()
+        LoadMasterDepartment()
     End Sub
 
     ' -----------------------------------------------------------------
@@ -256,7 +256,7 @@ Public Class BankGeneralLedgerApp
     ' Generate laporan berdasarkan periode (dan filter opsional)
     Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
         Dim startDate As DateTime = dtpPeriode.Value
-        Dim endDate As DateTime = DateTime.Now ' Bisa diganti dengan kontrol tambahan untuk tanggal akhir jika diperlukan
+        Dim endDate As DateTime = DateTime.Now
         Dim query As String = "SELECT branch_id, ledger_id, SUM(debit) AS TotalDebit, SUM(credit) AS TotalCredit " &
                               "FROM journal_entries WHERE transaction_date BETWEEN @startDate AND @endDate " &
                               "GROUP BY branch_id, ledger_id"
@@ -271,8 +271,6 @@ Public Class BankGeneralLedgerApp
                 dgvLaporan.DataSource = dt
             End Using
         End Using
-
-        ' Perbarui grafik saldo bank setelah laporan di-load
         LoadBankBalances()
     End Sub
 
@@ -283,7 +281,6 @@ Public Class BankGeneralLedgerApp
             Dim query As String = "SELECT ledger_id, balance FROM bank_balances"
             Using cmd As New MySqlCommand(query, conn)
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
-                    ' Pastikan Chart memiliki setidaknya satu series. Misalnya: Series dengan index = 0
                     chartGrafikSaldo.Series(0).Points.Clear()
                     While reader.Read()
                         chartGrafikSaldo.Series(0).Points.AddXY(reader("ledger_id").ToString(), Convert.ToDecimal(reader("balance")))
@@ -293,79 +290,82 @@ Public Class BankGeneralLedgerApp
         End Using
     End Sub
 
-    Private Sub LoadMasterCostCentre()
-        Dim query As String = "SELECT * FROM cost_centers ORDER BY cost_center_id ASC"
-        dgvMasterCostCenter.DataSource = GetData(query)
+    ' ==============================
+    ' TAB: MASTER DEPARTMENT
+    ' ==============================
+    Private Sub LoadMasterDepartment()
+        Dim query As String = "SELECT d.department_id, d.department_name, b.branch_name FROM departments d INNER JOIN branches b ON d.branch_id = b.branch_id ORDER BY d.department_id ASC"
+        dgvDepartment.DataSource = GetData(query)
 
-        Dim dt_branch As DataTable = GetData("SELECT * FROM branches")
-        If dt_branch IsNot Nothing Then
-            cbtBranchCC.DataSource = dt_branch
-            cbtBranchCC.DisplayMember = "branch_name"
-            cbtBranchCC.ValueMember = "branch_id"
-        End If
-
-        Dim dt_departement As DataTable = GetData("SELECT * FROM departments")
-        If dt_departement IsNot Nothing Then
-            cbtDepartmenthCC.DataSource = dt_departement
-            cbtDepartmenthCC.DisplayMember = "department_name"
-            cbtDepartmenthCC.ValueMember = "department_id"
-        End If
+        Dim branchQuery As String = "SELECT branch_id, branch_name FROM branches"
+        Dim dtBranch As DataTable = GetData(branchQuery)
+        cbBranch.DataSource = dtBranch
+        cbBranch.DisplayMember = "branch_name"
+        cbBranch.ValueMember = "branch_id"
     End Sub
 
-    Private Sub btnAddCostCenter_Click(sender As Object, e As EventArgs) Handles btnAddCostCenter.Click
+    Private Sub btnAddDept_Click(sender As Object, e As EventArgs) Handles btnAddDept.Click
+        If String.IsNullOrWhiteSpace(txtDeptName.Text) Then
+            MessageBox.Show("Nama departemen tidak boleh kosong.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         Using conn As New MySqlConnection(connectionString)
             conn.Open()
-            Dim query As String = "INSERT INTO cost_centers (cost_center_name, branch_id, department_id) VALUES (@cost_center_name, @branch_id, @department_id)"
+            Dim query As String = "INSERT INTO departments (department_name, branch_id) VALUES (@name, @branch_id)"
             Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@cost_center_name", txtCCName.Text.Trim())
-                cmd.Parameters.AddWithValue("@branch_id", cbtBranchCC.SelectedValue)
-                cmd.Parameters.AddWithValue("@department_id", cbtDepartmenthCC.SelectedValue)
+                cmd.Parameters.AddWithValue("@name", txtDeptName.Text.Trim())
+                cmd.Parameters.AddWithValue("@branch_id", cbBranch.SelectedValue)
                 cmd.ExecuteNonQuery()
             End Using
         End Using
-        LoadMasterCostCentre()
-        MessageBox.Show("Cost Center berhasil ditambahkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        LoadMasterDepartment()
+        MessageBox.Show("Departemen ditambahkan.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub btnEditCostCenter_Click(sender As Object, e As EventArgs) Handles btnEditCostCenter.Click
-        If dgvMasterCostCenter.SelectedRows.Count = 0 Then
-            MessageBox.Show("Pilih Cost Center yang ingin diedit!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
+    Private Sub btnEditDept_Click(sender As Object, e As EventArgs) Handles btnEditDept.Click
+        If dgvDepartment.SelectedRows.Count = 0 Then
+            MessageBox.Show("Pilih departemen yang akan diubah.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
         End If
 
-        Dim CCID As Integer = Convert.ToInt32(dgvMasterCostCenter.SelectedRows(0).Cells("cost_center_id").Value)
+        Dim deptId As Integer = Convert.ToInt32(dgvDepartment.SelectedRows(0).Cells("department_id").Value)
         Using conn As New MySqlConnection(connectionString)
             conn.Open()
-            Dim query As String = "UPDATE cost_centers SET cost_center_name = @cost_center_name, branch_id = @branch_id, department_id = @department_id WHERE cost_center_id = @cost_center_id "
+            Dim query As String = "UPDATE departments SET department_name = @name, branch_id = @branch_id WHERE department_id = @id"
             Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@branch_id", cbtBranchCC.SelectedValue)
-                cmd.Parameters.AddWithValue("@cost_center_name", txtCCName.Text)
-                cmd.Parameters.AddWithValue("@department_id", cbtDepartmenthCC.SelectedValue)
-                cmd.Parameters.AddWithValue("@cost_center_id", CCID)
+                cmd.Parameters.AddWithValue("@name", txtDeptName.Text.Trim())
+                cmd.Parameters.AddWithValue("@branch_id", cbBranch.SelectedValue)
+                cmd.Parameters.AddWithValue("@id", deptId)
                 cmd.ExecuteNonQuery()
             End Using
         End Using
-        LoadMasterCostCentre()
-        MessageBox.Show("Branch berhasil diperbarui!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        LoadMasterDepartment()
+        MessageBox.Show("Departemen diperbarui.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub btnDeleteCostCenter_Click(sender As Object, e As EventArgs) Handles btnDeleteCostCenter.Click
-        If dgvMasterCostCenter.SelectedRows.Count = 0 Then
-            MessageBox.Show("Pilih Cost Center yang ingin dihapus!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
+    Private Sub btnDeleteDept_Click(sender As Object, e As EventArgs) Handles btnDeleteDept.Click
+        If dgvDepartment.SelectedRows.Count = 0 Then
+            MessageBox.Show("Pilih departemen yang akan dihapus.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
         End If
 
-        Dim CCID As Integer = Convert.ToInt32(dgvMasterCostCenter.SelectedRows(0).Cells("cost_center_id").Value)
+        Dim deptId As Integer = Convert.ToInt32(dgvDepartment.SelectedRows(0).Cells("department_id").Value)
         Using conn As New MySqlConnection(connectionString)
             conn.Open()
-            Dim query As String = "DELETE FROM cost_centers WHERE cost_center_id = @cost_center_id"
+            Dim query As String = "DELETE FROM departments WHERE department_id = @id"
             Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@cost_center_id", CCID)
+                cmd.Parameters.AddWithValue("@id", deptId)
                 cmd.ExecuteNonQuery()
             End Using
         End Using
-        LoadMasterCostCentre()
-        MessageBox.Show("Branch dihapus!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        LoadMasterDepartment()
+        MessageBox.Show("Departemen dihapus.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
+        txtDeptName.Text = ""
+        If cbBranch.Items.Count > 0 Then cbBranch.SelectedIndex = 0
     End Sub
 
 End Class
