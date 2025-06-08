@@ -580,20 +580,20 @@ Partial Class BankGeneralLedgerApp
         '
         'chartGrafikSaldo
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.chartGrafikSaldo.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.chartGrafikSaldo.Legends.Add(Legend2)
-        Me.chartGrafikSaldo.Location = New System.Drawing.Point(9, 445)
-        Me.chartGrafikSaldo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.chartGrafikSaldo.Name = "chartGrafikSaldo"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.chartGrafikSaldo.Series.Add(Series2)
-        Me.chartGrafikSaldo.Size = New System.Drawing.Size(687, 192)
-        Me.chartGrafikSaldo.TabIndex = 7
-        Me.chartGrafikSaldo.Text = "Chart1"
+        'ChartArea2.Name = "ChartArea1"
+        'Me.chartGrafikSaldo.ChartAreas.Add(ChartArea2)
+        'Legend2.Name = "Legend1"
+        'Me.chartGrafikSaldo.Legends.Add(Legend2)
+        'Me.chartGrafikSaldo.Location = New System.Drawing.Point(9, 445)
+        'Me.chartGrafikSaldo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        'Me.chartGrafikSaldo.Name = "chartGrafikSaldo"
+        'Series2.ChartArea = "ChartArea1"
+        'Series2.Legend = "Legend1"
+        'Series2.Name = "Series1"
+        'Me.chartGrafikSaldo.Series.Add(Series2)
+        'Me.chartGrafikSaldo.Size = New System.Drawing.Size(687, 192)
+        'Me.chartGrafikSaldo.TabIndex = 7
+        'Me.chartGrafikSaldo.Text = "Chart1"
         '
         'dgvLaporan
         '
