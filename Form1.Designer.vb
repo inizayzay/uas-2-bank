@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FrmGeneralLedgerApp
+Partial Class BankGeneralLedgerApp
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -28,7 +28,7 @@ Partial Class FrmGeneralLedgerApp
         Me.header = New System.Windows.Forms.Panel()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.gbDataJurnalEntry = New System.Windows.Forms.GroupBox()
+        Me.gbTransaksi = New System.Windows.Forms.GroupBox()
         Me.txtCreatedBy = New System.Windows.Forms.TextBox()
         Me.txtCredit = New System.Windows.Forms.TextBox()
         Me.btnRejectJournal = New System.Windows.Forms.Button()
@@ -48,11 +48,11 @@ Partial Class FrmGeneralLedgerApp
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.dgvJournalEntries = New System.Windows.Forms.DataGridView()
+        Me.dgvTransaksi = New System.Windows.Forms.DataGridView()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabMasterBranch = New System.Windows.Forms.TabPage()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.gbMaterBranch = New System.Windows.Forms.GroupBox()
+        Me.dgvMasterBranch = New System.Windows.Forms.DataGridView()
+        Me.gbMasterBranch = New System.Windows.Forms.GroupBox()
         Me.btnDeleteBranch = New System.Windows.Forms.Button()
         Me.btnEditBranch = New System.Windows.Forms.Button()
         Me.btnAddBranch = New System.Windows.Forms.Button()
@@ -63,35 +63,35 @@ Partial Class FrmGeneralLedgerApp
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.tabDataJurnal = New System.Windows.Forms.TabPage()
+        Me.btnSelanjutnya = New System.Windows.Forms.Button()
+        Me.btnRefreshJurnal = New System.Windows.Forms.Button()
+        Me.btnKembali = New System.Windows.Forms.Button()
+        Me.dgvJournalEntri = New System.Windows.Forms.DataGridView()
         Me.tabTransaksi = New System.Windows.Forms.TabPage()
         Me.tabLaporan = New System.Windows.Forms.TabPage()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.btnKembali = New System.Windows.Forms.Button()
-        Me.btnRefreshJurnal = New System.Windows.Forms.Button()
-        Me.btnSelanjutnya = New System.Windows.Forms.Button()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.cmbCabang = New System.Windows.Forms.ComboBox()
-        Me.dtpPeriode = New System.Windows.Forms.DateTimePicker()
-        Me.btnReport = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.chartGrafikSaldo = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.dgvLaporan = New System.Windows.Forms.DataGridView()
+        Me.gbLaporan = New System.Windows.Forms.GroupBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.btnReport = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.dtpPeriode = New System.Windows.Forms.DateTimePicker()
+        Me.cmbCabang = New System.Windows.Forms.ComboBox()
         Me.header.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbDataJurnalEntry.SuspendLayout()
-        CType(Me.dgvJournalEntries, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbTransaksi.SuspendLayout()
+        CType(Me.dgvTransaksi, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.tabMasterBranch.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbMaterBranch.SuspendLayout()
+        CType(Me.dgvMasterBranch, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbMasterBranch.SuspendLayout()
         Me.tabDataJurnal.SuspendLayout()
+        CType(Me.dgvJournalEntri, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabTransaksi.SuspendLayout()
         Me.tabLaporan.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartGrafikSaldo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvLaporan, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbLaporan.SuspendLayout()
         Me.SuspendLayout()
         '
         'header
@@ -123,33 +123,33 @@ Partial Class FrmGeneralLedgerApp
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
-        'gbDataJurnalEntry
+        'gbTransaksi
         '
-        Me.gbDataJurnalEntry.Controls.Add(Me.txtCreatedBy)
-        Me.gbDataJurnalEntry.Controls.Add(Me.txtCredit)
-        Me.gbDataJurnalEntry.Controls.Add(Me.btnRejectJournal)
-        Me.gbDataJurnalEntry.Controls.Add(Me.btnAddJournal)
-        Me.gbDataJurnalEntry.Controls.Add(Me.btnApproveJournal)
-        Me.gbDataJurnalEntry.Controls.Add(Me.txtDebit)
-        Me.gbDataJurnalEntry.Controls.Add(Me.btnPostJournal)
-        Me.gbDataJurnalEntry.Controls.Add(Me.btnReverseJournal)
-        Me.gbDataJurnalEntry.Controls.Add(Me.txtCostCenterID)
-        Me.gbDataJurnalEntry.Controls.Add(Me.txtLedgerID)
-        Me.gbDataJurnalEntry.Controls.Add(Me.txtDepartmentID)
-        Me.gbDataJurnalEntry.Controls.Add(Me.txtTransaksiBranchID)
-        Me.gbDataJurnalEntry.Controls.Add(Me.Label7)
-        Me.gbDataJurnalEntry.Controls.Add(Me.Label6)
-        Me.gbDataJurnalEntry.Controls.Add(Me.Label5)
-        Me.gbDataJurnalEntry.Controls.Add(Me.Label4)
-        Me.gbDataJurnalEntry.Controls.Add(Me.Label3)
-        Me.gbDataJurnalEntry.Controls.Add(Me.Label2)
-        Me.gbDataJurnalEntry.Controls.Add(Me.Label1)
-        Me.gbDataJurnalEntry.Location = New System.Drawing.Point(6, 6)
-        Me.gbDataJurnalEntry.Name = "gbDataJurnalEntry"
-        Me.gbDataJurnalEntry.Size = New System.Drawing.Size(459, 203)
-        Me.gbDataJurnalEntry.TabIndex = 9
-        Me.gbDataJurnalEntry.TabStop = False
-        Me.gbDataJurnalEntry.Text = "Data Journal Entry"
+        Me.gbTransaksi.Controls.Add(Me.txtCreatedBy)
+        Me.gbTransaksi.Controls.Add(Me.txtCredit)
+        Me.gbTransaksi.Controls.Add(Me.btnRejectJournal)
+        Me.gbTransaksi.Controls.Add(Me.btnAddJournal)
+        Me.gbTransaksi.Controls.Add(Me.btnApproveJournal)
+        Me.gbTransaksi.Controls.Add(Me.txtDebit)
+        Me.gbTransaksi.Controls.Add(Me.btnPostJournal)
+        Me.gbTransaksi.Controls.Add(Me.btnReverseJournal)
+        Me.gbTransaksi.Controls.Add(Me.txtCostCenterID)
+        Me.gbTransaksi.Controls.Add(Me.txtLedgerID)
+        Me.gbTransaksi.Controls.Add(Me.txtDepartmentID)
+        Me.gbTransaksi.Controls.Add(Me.txtTransaksiBranchID)
+        Me.gbTransaksi.Controls.Add(Me.Label7)
+        Me.gbTransaksi.Controls.Add(Me.Label6)
+        Me.gbTransaksi.Controls.Add(Me.Label5)
+        Me.gbTransaksi.Controls.Add(Me.Label4)
+        Me.gbTransaksi.Controls.Add(Me.Label3)
+        Me.gbTransaksi.Controls.Add(Me.Label2)
+        Me.gbTransaksi.Controls.Add(Me.Label1)
+        Me.gbTransaksi.Location = New System.Drawing.Point(6, 6)
+        Me.gbTransaksi.Name = "gbTransaksi"
+        Me.gbTransaksi.Size = New System.Drawing.Size(459, 203)
+        Me.gbTransaksi.TabIndex = 9
+        Me.gbTransaksi.TabStop = False
+        Me.gbTransaksi.Text = "Transaksi"
         '
         'txtCreatedBy
         '
@@ -308,13 +308,13 @@ Partial Class FrmGeneralLedgerApp
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Branch ID"
         '
-        'dgvJournalEntries
+        'dgvTransaksi
         '
-        Me.dgvJournalEntries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvJournalEntries.Location = New System.Drawing.Point(6, 215)
-        Me.dgvJournalEntries.Name = "dgvJournalEntries"
-        Me.dgvJournalEntries.Size = New System.Drawing.Size(459, 193)
-        Me.dgvJournalEntries.TabIndex = 15
+        Me.dgvTransaksi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvTransaksi.Location = New System.Drawing.Point(6, 215)
+        Me.dgvTransaksi.Name = "dgvTransaksi"
+        Me.dgvTransaksi.Size = New System.Drawing.Size(459, 193)
+        Me.dgvTransaksi.TabIndex = 15
         '
         'TabControl1
         '
@@ -330,8 +330,8 @@ Partial Class FrmGeneralLedgerApp
         '
         'tabMasterBranch
         '
-        Me.tabMasterBranch.Controls.Add(Me.DataGridView1)
-        Me.tabMasterBranch.Controls.Add(Me.gbMaterBranch)
+        Me.tabMasterBranch.Controls.Add(Me.dgvMasterBranch)
+        Me.tabMasterBranch.Controls.Add(Me.gbMasterBranch)
         Me.tabMasterBranch.Location = New System.Drawing.Point(4, 22)
         Me.tabMasterBranch.Name = "tabMasterBranch"
         Me.tabMasterBranch.Padding = New System.Windows.Forms.Padding(3)
@@ -340,31 +340,31 @@ Partial Class FrmGeneralLedgerApp
         Me.tabMasterBranch.Text = "Master Branch"
         Me.tabMasterBranch.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'dgvMasterBranch
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(6, 174)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(458, 234)
-        Me.DataGridView1.TabIndex = 1
+        Me.dgvMasterBranch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvMasterBranch.Location = New System.Drawing.Point(6, 174)
+        Me.dgvMasterBranch.Name = "dgvMasterBranch"
+        Me.dgvMasterBranch.Size = New System.Drawing.Size(458, 234)
+        Me.dgvMasterBranch.TabIndex = 1
         '
-        'gbMaterBranch
+        'gbMasterBranch
         '
-        Me.gbMaterBranch.Controls.Add(Me.btnDeleteBranch)
-        Me.gbMaterBranch.Controls.Add(Me.btnEditBranch)
-        Me.gbMaterBranch.Controls.Add(Me.btnAddBranch)
-        Me.gbMaterBranch.Controls.Add(Me.txtAlamat)
-        Me.gbMaterBranch.Controls.Add(Me.txtBranchName)
-        Me.gbMaterBranch.Controls.Add(Me.txtMasterBranchID)
-        Me.gbMaterBranch.Controls.Add(Me.Label11)
-        Me.gbMaterBranch.Controls.Add(Me.Label10)
-        Me.gbMaterBranch.Controls.Add(Me.Label9)
-        Me.gbMaterBranch.Location = New System.Drawing.Point(6, 6)
-        Me.gbMaterBranch.Name = "gbMaterBranch"
-        Me.gbMaterBranch.Size = New System.Drawing.Size(458, 162)
-        Me.gbMaterBranch.TabIndex = 0
-        Me.gbMaterBranch.TabStop = False
-        Me.gbMaterBranch.Text = "Master Branch"
+        Me.gbMasterBranch.Controls.Add(Me.btnDeleteBranch)
+        Me.gbMasterBranch.Controls.Add(Me.btnEditBranch)
+        Me.gbMasterBranch.Controls.Add(Me.btnAddBranch)
+        Me.gbMasterBranch.Controls.Add(Me.txtAlamat)
+        Me.gbMasterBranch.Controls.Add(Me.txtBranchName)
+        Me.gbMasterBranch.Controls.Add(Me.txtMasterBranchID)
+        Me.gbMasterBranch.Controls.Add(Me.Label11)
+        Me.gbMasterBranch.Controls.Add(Me.Label10)
+        Me.gbMasterBranch.Controls.Add(Me.Label9)
+        Me.gbMasterBranch.Location = New System.Drawing.Point(6, 6)
+        Me.gbMasterBranch.Name = "gbMasterBranch"
+        Me.gbMasterBranch.Size = New System.Drawing.Size(458, 162)
+        Me.gbMasterBranch.TabIndex = 0
+        Me.gbMasterBranch.TabStop = False
+        Me.gbMasterBranch.Text = "Master Branch"
         '
         'btnDeleteBranch
         '
@@ -446,7 +446,7 @@ Partial Class FrmGeneralLedgerApp
         Me.tabDataJurnal.Controls.Add(Me.btnSelanjutnya)
         Me.tabDataJurnal.Controls.Add(Me.btnRefreshJurnal)
         Me.tabDataJurnal.Controls.Add(Me.btnKembali)
-        Me.tabDataJurnal.Controls.Add(Me.DataGridView2)
+        Me.tabDataJurnal.Controls.Add(Me.dgvJournalEntri)
         Me.tabDataJurnal.Location = New System.Drawing.Point(4, 22)
         Me.tabDataJurnal.Name = "tabDataJurnal"
         Me.tabDataJurnal.Padding = New System.Windows.Forms.Padding(3)
@@ -455,10 +455,45 @@ Partial Class FrmGeneralLedgerApp
         Me.tabDataJurnal.Text = "Data Jurnal"
         Me.tabDataJurnal.UseVisualStyleBackColor = True
         '
+        'btnSelanjutnya
+        '
+        Me.btnSelanjutnya.Location = New System.Drawing.Point(389, 384)
+        Me.btnSelanjutnya.Name = "btnSelanjutnya"
+        Me.btnSelanjutnya.Size = New System.Drawing.Size(75, 23)
+        Me.btnSelanjutnya.TabIndex = 3
+        Me.btnSelanjutnya.Text = "Selanjutnya"
+        Me.btnSelanjutnya.UseVisualStyleBackColor = True
+        '
+        'btnRefreshJurnal
+        '
+        Me.btnRefreshJurnal.Location = New System.Drawing.Point(185, 384)
+        Me.btnRefreshJurnal.Name = "btnRefreshJurnal"
+        Me.btnRefreshJurnal.Size = New System.Drawing.Size(98, 23)
+        Me.btnRefreshJurnal.TabIndex = 2
+        Me.btnRefreshJurnal.Text = "Refresh Jurnal"
+        Me.btnRefreshJurnal.UseVisualStyleBackColor = True
+        '
+        'btnKembali
+        '
+        Me.btnKembali.Location = New System.Drawing.Point(6, 384)
+        Me.btnKembali.Name = "btnKembali"
+        Me.btnKembali.Size = New System.Drawing.Size(75, 23)
+        Me.btnKembali.TabIndex = 1
+        Me.btnKembali.Text = "Kembali"
+        Me.btnKembali.UseVisualStyleBackColor = True
+        '
+        'dgvJournalEntri
+        '
+        Me.dgvJournalEntri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvJournalEntri.Location = New System.Drawing.Point(6, 6)
+        Me.dgvJournalEntri.Name = "dgvJournalEntri"
+        Me.dgvJournalEntri.Size = New System.Drawing.Size(458, 372)
+        Me.dgvJournalEntri.TabIndex = 0
+        '
         'tabTransaksi
         '
-        Me.tabTransaksi.Controls.Add(Me.dgvJournalEntries)
-        Me.tabTransaksi.Controls.Add(Me.gbDataJurnalEntry)
+        Me.tabTransaksi.Controls.Add(Me.dgvTransaksi)
+        Me.tabTransaksi.Controls.Add(Me.gbTransaksi)
         Me.tabTransaksi.Location = New System.Drawing.Point(4, 22)
         Me.tabTransaksi.Name = "tabTransaksi"
         Me.tabTransaksi.Padding = New System.Windows.Forms.Padding(3)
@@ -470,8 +505,8 @@ Partial Class FrmGeneralLedgerApp
         'tabLaporan
         '
         Me.tabLaporan.Controls.Add(Me.chartGrafikSaldo)
-        Me.tabLaporan.Controls.Add(Me.DataGridView3)
-        Me.tabLaporan.Controls.Add(Me.GroupBox1)
+        Me.tabLaporan.Controls.Add(Me.dgvLaporan)
+        Me.tabLaporan.Controls.Add(Me.gbLaporan)
         Me.tabLaporan.Location = New System.Drawing.Point(4, 22)
         Me.tabLaporan.Name = "tabLaporan"
         Me.tabLaporan.Padding = New System.Windows.Forms.Padding(3)
@@ -479,105 +514,6 @@ Partial Class FrmGeneralLedgerApp
         Me.tabLaporan.TabIndex = 3
         Me.tabLaporan.Text = "Laporan"
         Me.tabLaporan.UseVisualStyleBackColor = True
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(6, 6)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(458, 372)
-        Me.DataGridView2.TabIndex = 0
-        '
-        'btnKembali
-        '
-        Me.btnKembali.Location = New System.Drawing.Point(6, 384)
-        Me.btnKembali.Name = "btnKembali"
-        Me.btnKembali.Size = New System.Drawing.Size(75, 23)
-        Me.btnKembali.TabIndex = 1
-        Me.btnKembali.Text = "Kembali"
-        Me.btnKembali.UseVisualStyleBackColor = True
-        '
-        'btnRefreshJurnal
-        '
-        Me.btnRefreshJurnal.Location = New System.Drawing.Point(185, 384)
-        Me.btnRefreshJurnal.Name = "btnRefreshJurnal"
-        Me.btnRefreshJurnal.Size = New System.Drawing.Size(98, 23)
-        Me.btnRefreshJurnal.TabIndex = 2
-        Me.btnRefreshJurnal.Text = "Refresh Jurnal"
-        Me.btnRefreshJurnal.UseVisualStyleBackColor = True
-        '
-        'btnSelanjutnya
-        '
-        Me.btnSelanjutnya.Location = New System.Drawing.Point(389, 384)
-        Me.btnSelanjutnya.Name = "btnSelanjutnya"
-        Me.btnSelanjutnya.Size = New System.Drawing.Size(75, 23)
-        Me.btnSelanjutnya.TabIndex = 3
-        Me.btnSelanjutnya.Text = "Selanjutnya"
-        Me.btnSelanjutnya.UseVisualStyleBackColor = True
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(6, 22)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(44, 13)
-        Me.Label12.TabIndex = 0
-        Me.Label12.Text = "Cabang"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(6, 52)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(43, 13)
-        Me.Label13.TabIndex = 1
-        Me.Label13.Text = "Periode"
-        '
-        'cmbCabang
-        '
-        Me.cmbCabang.FormattingEnabled = True
-        Me.cmbCabang.Location = New System.Drawing.Point(73, 19)
-        Me.cmbCabang.Name = "cmbCabang"
-        Me.cmbCabang.Size = New System.Drawing.Size(121, 21)
-        Me.cmbCabang.TabIndex = 2
-        '
-        'dtpPeriode
-        '
-        Me.dtpPeriode.Location = New System.Drawing.Point(73, 46)
-        Me.dtpPeriode.Name = "dtpPeriode"
-        Me.dtpPeriode.Size = New System.Drawing.Size(200, 20)
-        Me.dtpPeriode.TabIndex = 3
-        '
-        'btnReport
-        '
-        Me.btnReport.Location = New System.Drawing.Point(73, 72)
-        Me.btnReport.Name = "btnReport"
-        Me.btnReport.Size = New System.Drawing.Size(75, 23)
-        Me.btnReport.TabIndex = 4
-        Me.btnReport.Text = "Report"
-        Me.btnReport.UseVisualStyleBackColor = True
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Label12)
-        Me.GroupBox1.Controls.Add(Me.btnReport)
-        Me.GroupBox1.Controls.Add(Me.Label13)
-        Me.GroupBox1.Controls.Add(Me.dtpPeriode)
-        Me.GroupBox1.Controls.Add(Me.cmbCabang)
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(459, 105)
-        Me.GroupBox1.TabIndex = 5
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Laporan"
-        '
-        'DataGridView3
-        '
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Location = New System.Drawing.Point(6, 117)
-        Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.Size = New System.Drawing.Size(459, 166)
-        Me.DataGridView3.TabIndex = 6
         '
         'chartGrafikSaldo
         '
@@ -595,7 +531,71 @@ Partial Class FrmGeneralLedgerApp
         Me.chartGrafikSaldo.TabIndex = 7
         Me.chartGrafikSaldo.Text = "Chart1"
         '
-        'FrmGeneralLedgerApp
+        'dgvLaporan
+        '
+        Me.dgvLaporan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvLaporan.Location = New System.Drawing.Point(6, 117)
+        Me.dgvLaporan.Name = "dgvLaporan"
+        Me.dgvLaporan.Size = New System.Drawing.Size(459, 166)
+        Me.dgvLaporan.TabIndex = 6
+        '
+        'gbLaporan
+        '
+        Me.gbLaporan.Controls.Add(Me.Label12)
+        Me.gbLaporan.Controls.Add(Me.btnReport)
+        Me.gbLaporan.Controls.Add(Me.Label13)
+        Me.gbLaporan.Controls.Add(Me.dtpPeriode)
+        Me.gbLaporan.Controls.Add(Me.cmbCabang)
+        Me.gbLaporan.Location = New System.Drawing.Point(6, 6)
+        Me.gbLaporan.Name = "gbLaporan"
+        Me.gbLaporan.Size = New System.Drawing.Size(459, 105)
+        Me.gbLaporan.TabIndex = 5
+        Me.gbLaporan.TabStop = False
+        Me.gbLaporan.Text = "Laporan"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(6, 22)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(44, 13)
+        Me.Label12.TabIndex = 0
+        Me.Label12.Text = "Cabang"
+        '
+        'btnReport
+        '
+        Me.btnReport.Location = New System.Drawing.Point(73, 72)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(75, 23)
+        Me.btnReport.TabIndex = 4
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(6, 52)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(43, 13)
+        Me.Label13.TabIndex = 1
+        Me.Label13.Text = "Periode"
+        '
+        'dtpPeriode
+        '
+        Me.dtpPeriode.Location = New System.Drawing.Point(73, 46)
+        Me.dtpPeriode.Name = "dtpPeriode"
+        Me.dtpPeriode.Size = New System.Drawing.Size(200, 20)
+        Me.dtpPeriode.TabIndex = 3
+        '
+        'cmbCabang
+        '
+        Me.cmbCabang.FormattingEnabled = True
+        Me.cmbCabang.Location = New System.Drawing.Point(73, 19)
+        Me.cmbCabang.Name = "cmbCabang"
+        Me.cmbCabang.Size = New System.Drawing.Size(121, 21)
+        Me.cmbCabang.TabIndex = 2
+        '
+        'BankGeneralLedgerApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -605,33 +605,33 @@ Partial Class FrmGeneralLedgerApp
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "FrmGeneralLedgerApp"
+        Me.Name = "BankGeneralLedgerApp"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "General Ledger App"
+        Me.Text = "Bank General Ledger App"
         Me.header.ResumeLayout(False)
         Me.header.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbDataJurnalEntry.ResumeLayout(False)
-        Me.gbDataJurnalEntry.PerformLayout()
-        CType(Me.dgvJournalEntries, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbTransaksi.ResumeLayout(False)
+        Me.gbTransaksi.PerformLayout()
+        CType(Me.dgvTransaksi, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
         Me.tabMasterBranch.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbMaterBranch.ResumeLayout(False)
-        Me.gbMaterBranch.PerformLayout()
+        CType(Me.dgvMasterBranch, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbMasterBranch.ResumeLayout(False)
+        Me.gbMasterBranch.PerformLayout()
         Me.tabDataJurnal.ResumeLayout(False)
+        CType(Me.dgvJournalEntri, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabTransaksi.ResumeLayout(False)
         Me.tabLaporan.ResumeLayout(False)
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chartGrafikSaldo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvLaporan, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbLaporan.ResumeLayout(False)
+        Me.gbLaporan.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents header As Panel
-    Friend WithEvents gbDataJurnalEntry As GroupBox
+    Friend WithEvents gbTransaksi As GroupBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
@@ -651,7 +651,7 @@ Partial Class FrmGeneralLedgerApp
     Friend WithEvents btnRejectJournal As Button
     Friend WithEvents btnReverseJournal As Button
     Friend WithEvents btnPostJournal As Button
-    Friend WithEvents dgvJournalEntries As DataGridView
+    Friend WithEvents dgvTransaksi As DataGridView
     Friend WithEvents Label8 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents TabControl1 As TabControl
@@ -659,7 +659,7 @@ Partial Class FrmGeneralLedgerApp
     Friend WithEvents tabDataJurnal As TabPage
     Friend WithEvents tabTransaksi As TabPage
     Friend WithEvents tabLaporan As TabPage
-    Friend WithEvents gbMaterBranch As GroupBox
+    Friend WithEvents gbMasterBranch As GroupBox
     Friend WithEvents txtBranchName As TextBox
     Friend WithEvents txtMasterBranchID As TextBox
     Friend WithEvents Label11 As Label
@@ -669,17 +669,17 @@ Partial Class FrmGeneralLedgerApp
     Friend WithEvents btnEditBranch As Button
     Friend WithEvents btnAddBranch As Button
     Friend WithEvents txtAlamat As TextBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvMasterBranch As DataGridView
     Friend WithEvents btnSelanjutnya As Button
     Friend WithEvents btnRefreshJurnal As Button
     Friend WithEvents btnKembali As Button
-    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents dgvJournalEntri As DataGridView
     Friend WithEvents dtpPeriode As DateTimePicker
     Friend WithEvents cmbCabang As ComboBox
     Friend WithEvents Label13 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents btnReport As Button
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents gbLaporan As GroupBox
     Friend WithEvents chartGrafikSaldo As DataVisualization.Charting.Chart
-    Friend WithEvents DataGridView3 As DataGridView
+    Friend WithEvents dgvLaporan As DataGridView
 End Class

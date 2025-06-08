@@ -1,220 +1,294 @@
-Imports System.Data
+﻿Imports System.Data
 Imports MySql.Data.MySqlClient
+Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class BankGeneralLedgerApp
     Inherits Form
 
     ' Connection string – sesuaikan password dan detail MySQL Anda.
-    Private connectionString As String = "server=localhost;user id=root;database=general_ledger_db;password=yourpassword;"
+    Private connectionString As String = "server=localhost;user id=root;database=general_ledger_db;password=;"
 
-    ' Konrol di form sudah dibuat melalui Designer:
-    ' Misalnya:
-    '   dtpTransaction (DateTimePicker) untuk menampilkan tanggal transaksi
-    '   txtBranchID, txtLedgerID, txtCostCenterID, txtDebit, txtCredit, txtCreatedBy (TextBox)
-    '   btnAddJournal, btnApproveJournal, btnRejectJournal, btnReverseJournal, btnPostJournal (Button)
-    '   dgvJournalEntries (DataGridView) untuk menampilkan data jurnal
-
-    Public Sub New()
-        ' Memanggil inisialisasi komponen yang dibuat oleh Designer
-        InitializeComponent()
+    ' -----------------------------------------------------------------
+    ' FORM LOAD: Panggil semua metode untuk mengisi tiap tab di-load
+    ' -----------------------------------------------------------------
+    Private Sub BankGeneralLedgerApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LoadMasterBranch()
+        LoadDataJurnal()
+        LoadTransaksi()
+        LoadLaporan()
     End Sub
 
-    ' Method load form untuk menampilkan data transaksi di DataGridView
-    Private Sub FrmGeneralLedgerApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadJournalEntries()
-    End Sub
-
-    ' Method untuk mengambil data dari tabel journal_entries
-    Private Sub LoadJournalEntries()
-        Dim query As String = "SELECT * FROM journal_entries ORDER BY created_at DESC"
+    ' -----------------------------------------------------------------
+    ' Helper Function: Eksekusi query dan kembalikan DataTable
+    ' -----------------------------------------------------------------
+    Private Function GetData(query As String) As DataTable
+        Dim dt As New DataTable()
         Using conn As New MySqlConnection(connectionString)
-                conn.Open()
+            conn.Open()
+            Using cmd As New MySqlCommand(query, conn)
+                Dim adapter As New MySqlDataAdapter(cmd)
+                adapter.Fill(dt)
+            End Using
+        End Using
+        Return dt
+    End Function
+
+    ' ==============================
+    ' TAB 1: MASTER BRANCH
+    ' ==============================
+
+    ' Muat data branches pada DataGridView: dgvMasterBranch
+    Private Sub LoadMasterBranch()
+        Dim query As String = "SELECT * FROM branches ORDER BY branch_id ASC"
+        dgvMasterBranch.DataSource = GetData(query)
+    End Sub
+
+    ' --- CREATE Branch ---
+    Private Sub btnAddBranch_Click(sender As Object, e As EventArgs) Handles btnAddBranch.Click
+        Using conn As New MySqlConnection(connectionString)
+            conn.Open()
+            Dim query As String = "INSERT INTO branches (branch_name, branch_address) VALUES (@branch_name, @branch_address)"
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@branch_name", txtBranchName.Text.Trim())
+                cmd.Parameters.AddWithValue("@branch_address", txtAlamat.Text.Trim())
+                cmd.ExecuteNonQuery()
+            End Using
+        End Using
+        LoadMasterBranch()
+        MessageBox.Show("Branch berhasil ditambahkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    ' --- UPDATE Branch ---
+    Private Sub btnEditBranch_Click(sender As Object, e As EventArgs) Handles btnEditBranch.Click
+        If dgvMasterBranch.SelectedRows.Count = 0 Then
+            MessageBox.Show("Pilih branch yang ingin diedit!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Dim branchID As Integer = Convert.ToInt32(dgvMasterBranch.SelectedRows(0).Cells("branch_id").Value)
+        Using conn As New MySqlConnection(connectionString)
+            conn.Open()
             Dim query As String = "UPDATE branches SET branch_name = @branch_name, branch_address = @branch_address WHERE branch_id = @branch_id"
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@branch_name", txtBranchName.Text.Trim())
                 cmd.Parameters.AddWithValue("@branch_address", txtAlamat.Text.Trim())
                 cmd.Parameters.AddWithValue("@branch_id", branchID)
                 cmd.ExecuteNonQuery()
+            End Using
         End Using
+        LoadMasterBranch()
+        MessageBox.Show("Branch berhasil diperbarui!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    ' Event handler untuk tombol tambah transaksi (Add Journal)
+    ' --- DELETE Branch ---
+    Private Sub btnDeleteBranch_Click(sender As Object, e As EventArgs) Handles btnDeleteBranch.Click
+        If dgvMasterBranch.SelectedRows.Count = 0 Then
+            MessageBox.Show("Pilih branch yang ingin dihapus!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Dim branchID As Integer = Convert.ToInt32(dgvMasterBranch.SelectedRows(0).Cells("branch_id").Value)
+        Using conn As New MySqlConnection(connectionString)
+            conn.Open()
+            Dim query As String = "DELETE FROM branches WHERE branch_id = @branch_id"
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@branch_id", branchID)
+                cmd.ExecuteNonQuery()
+            End Using
+        End Using
+        LoadMasterBranch()
+        MessageBox.Show("Branch dihapus!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    ' ==============================
+    ' TAB 2: DATA JURNAL
+    ' ==============================
+
+    ' Muat semua data jurnal di DataGridView: dgvJournalEntri
+    Private Sub LoadDataJurnal()
+        Dim query As String = "SELECT * FROM journal_entries ORDER BY created_at DESC"
         dgvJournalEntri.DataSource = GetData(query)
+    End Sub
+
+    ' Tombol refresh untuk data jurnal
+    Private Sub btnRefreshJurnal_Click(sender As Object, e As EventArgs) Handles btnRefreshJurnal.Click
+        LoadDataJurnal()
+    End Sub
+
+    ' Tombol navigasi untuk pagination (contoh sederhana)
+    Private Sub btnKembali_Click(sender As Object, e As EventArgs) Handles btnKembali.Click
+        MessageBox.Show("Navigasi ke halaman sebelumnya (pagination dikembangkan jika diperlukan).")
+    End Sub
+
+    Private Sub btnSelanjutnya_Click(sender As Object, e As EventArgs) Handles btnSelanjutnya.Click
+        MessageBox.Show("Navigasi ke halaman berikutnya (pagination dikembangkan jika diperlukan).")
+    End Sub
+
+    ' ==============================
+    ' TAB 3: TRANSAKSI
+    ' ==============================
+
+    ' Muat transaksi dengan status NEW ke DataGridView: dgvTransaksi
+    Private Sub LoadTransaksi()
+        Dim query As String = "SELECT * FROM journal_entries WHERE status = 'NEW' ORDER BY created_at DESC"
+        dgvTransaksi.DataSource = GetData(query)
+    End Sub
+
+    ' Tambah transaksi melalui stored procedure sp_insert_bank_transaction
     Private Sub btnAddJournal_Click(sender As Object, e As EventArgs) Handles btnAddJournal.Click
-        ' Ambil input dari kontrol
-        Dim transactionDate As DateTime = dtpPeriode.Value
-        Dim branchID As Integer, ledgerID As Integer, costCenterID As Integer
-        Dim debitAmount As Decimal, creditAmount As Decimal
+        ' Ambil nilai transaksi – gunakan DateTime.Now atau kontrol DateTimePicker jika tersedia.
+        Dim transactionDate As DateTime = DateTime.Now
+        Dim branchID As Integer
+        Dim ledgerID As Integer
+        Dim costCenterID As Integer
+        Dim debitAmount As Decimal
+        Dim creditAmount As Decimal
         Dim createdBy As String = txtCreatedBy.Text.Trim()
 
-        ' Validasi input untuk Branch, Ledger, dan Cost Center
         If Not Integer.TryParse(txtTransaksiBranchID.Text, branchID) Then
-            MessageBox.Show("Input Branch ID tidak valid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Branch ID tidak valid!")
             Exit Sub
         End If
-
         If Not Integer.TryParse(txtLedgerID.Text, ledgerID) Then
-            MessageBox.Show("Input Ledger ID tidak valid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Ledger ID tidak valid!")
             Exit Sub
         End If
-
         If Not Integer.TryParse(txtCostCenterID.Text, costCenterID) Then
-            MessageBox.Show("Input Cost Center ID tidak valid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Cost Center ID tidak valid!")
             Exit Sub
         End If
-
-        ' Validasi input untuk Debit dan Credit
         If Not Decimal.TryParse(txtDebit.Text, debitAmount) Then
-            MessageBox.Show("Input Debit tidak valid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Input Debit tidak valid!")
             Exit Sub
         End If
-
         If Not Decimal.TryParse(txtCredit.Text, creditAmount) Then
-            MessageBox.Show("Input Credit tidak valid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Input Credit tidak valid!")
             Exit Sub
         End If
 
-        ' Validasi: hanya salah satu antara debit atau credit yang boleh lebih dari 0
+        ' Validasi: hanya salah satu (Debit atau Credit) yang valid
         If (debitAmount <= 0 And creditAmount <= 0) Or (debitAmount > 0 And creditAmount > 0) Then
-            MessageBox.Show("Transaksi tidak valid: Tentukan salah satu antara debit atau credit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Transaksi tidak valid: Tentukan satu antara Debit atau Credit!")
             Exit Sub
         End If
 
-        ' Panggil stored procedure sp_insert_bank_transaction untuk memasukkan transaksi
         Using conn As New MySqlConnection(connectionString)
-            Try
-                conn.Open()
-                Using cmd As New MySqlCommand("sp_insert_bank_transaction", conn)
-                    cmd.CommandType = CommandType.StoredProcedure
-                    ' Parameter-parameter sesuai dengan definisi stored procedure
-                    cmd.Parameters.AddWithValue("p_transaction_date", transactionDate)
-                    cmd.Parameters.AddWithValue("p_branch_id", branchID)
-                    cmd.Parameters.AddWithValue("p_ledger_id", ledgerID)
-                    cmd.Parameters.AddWithValue("p_cost_center_id", costCenterID)
-                    cmd.Parameters.AddWithValue("p_debit", debitAmount)
-                    cmd.Parameters.AddWithValue("p_credit", creditAmount)
-                    cmd.Parameters.AddWithValue("p_audittrail", "")  ' Bisa dikembangkan untuk menyimpan log aktivitas
-                    cmd.Parameters.AddWithValue("p_created_by", createdBy)
-                    cmd.ExecuteNonQuery()
-                End Using
-                MessageBox.Show("Transaksi berhasil ditambahkan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBox.Show("Error dalam transaksi: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+            conn.Open()
+            Using cmd As New MySqlCommand("sp_insert_bank_transaction", conn)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.AddWithValue("p_transaction_date", transactionDate)
+                cmd.Parameters.AddWithValue("p_branch_id", branchID)
+                cmd.Parameters.AddWithValue("p_ledger_id", ledgerID)
+                cmd.Parameters.AddWithValue("p_cost_center_id", costCenterID)
+                cmd.Parameters.AddWithValue("p_debit", debitAmount)
+                cmd.Parameters.AddWithValue("p_credit", creditAmount)
+                cmd.Parameters.AddWithValue("p_audittrail", "Transaksi via WinForms")
+                cmd.Parameters.AddWithValue("p_created_by", createdBy)
+                cmd.ExecuteNonQuery()
+            End Using
         End Using
 
-        LoadJournalEntries()
+        LoadTransaksi()
+        LoadDataJurnal() ' Refresh data jurnal secara keseluruhan
+        MessageBox.Show("Transaksi berhasil ditambahkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    ' Event handler untuk Approve transaksi (ubah status menjadi 'APR')
+    ' Fungsi helper untuk mengubah status transaksi (Approve, Reject, Reverse, Post)
+    Private Sub UpdateTransactionStatus(newStatus As String, Optional currentStatus As String = "")
+        If dgvTransaksi.SelectedRows.Count = 0 Then
+            MessageBox.Show("Pilih transaksi terlebih dahulu!")
+            Exit Sub
+        End If
+
+        Dim journalID As Integer = Convert.ToInt32(dgvTransaksi.SelectedRows(0).Cells("journal_id").Value)
+        Dim query As String = "UPDATE journal_entries SET status = @newStatus WHERE journal_id = @journalID"
+        If currentStatus <> "" Then query &= " AND status = @currentStatus"
+
+        Using conn As New MySqlConnection(connectionString)
+            conn.Open()
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@newStatus", newStatus)
+                cmd.Parameters.AddWithValue("@journalID", journalID)
+                If currentStatus <> "" Then
+                    cmd.Parameters.AddWithValue("@currentStatus", currentStatus)
+                End If
+                Dim affected As Integer = cmd.ExecuteNonQuery()
+                If affected = 0 Then
+                    MessageBox.Show("Gagal mengubah status transaksi. Pastikan transaksi dipilih dan status sesuai!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
+            End Using
+        End Using
+
+        LoadTransaksi()
+        LoadDataJurnal()
+        MessageBox.Show("Status transaksi diubah ke " & newStatus, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
     Private Sub btnApproveJournal_Click(sender As Object, e As EventArgs) Handles btnApproveJournal.Click
-        If dgvJournalEntries.SelectedRows.Count = 0 Then
-            MessageBox.Show("Pilih transaksi yang ingin di-approve.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
-
-        Dim journalID As Integer = Convert.ToInt32(dgvJournalEntries.SelectedRows(0).Cells("journal_id").Value)
-        Dim query As String = "UPDATE journal_entries SET status = 'APR' WHERE journal_id = @journal_id"
-        Using conn As New MySqlConnection(connectionString)
-            Try
-                conn.Open()
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@journal_id", journalID)
-                    cmd.ExecuteNonQuery()
-                End Using
-                MessageBox.Show("Transaksi berhasil di-approve.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBox.Show("Error approve transaksi: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End Using
-
-        LoadJournalEntries()
+        UpdateTransactionStatus("APR", "NEW")
     End Sub
 
-    ' Event handler untuk Reject transaksi (ubah status menjadi 'RJC')
     Private Sub btnRejectJournal_Click(sender As Object, e As EventArgs) Handles btnRejectJournal.Click
-        If dgvJournalEntries.SelectedRows.Count = 0 Then
-            MessageBox.Show("Pilih transaksi yang ingin di-reject.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
-
-        Dim journalID As Integer = Convert.ToInt32(dgvJournalEntries.SelectedRows(0).Cells("journal_id").Value)
-        Dim query As String = "UPDATE journal_entries SET status = 'RJC' WHERE journal_id = @journal_id"
-
-        Using conn As New MySqlConnection(connectionString)
-            Try
-                conn.Open()
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@journal_id", journalID)
-                    cmd.ExecuteNonQuery()
-                End Using
-                MessageBox.Show("Transaksi berhasil di-reject.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBox.Show("Error reject transaksi: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End Using
-
-        LoadJournalEntries()
+        UpdateTransactionStatus("RJC", "NEW")
     End Sub
 
-    ' Event handler untuk Reverse transaksi (ubah status APR kembali ke NEW)
     Private Sub btnReverseJournal_Click(sender As Object, e As EventArgs) Handles btnReverseJournal.Click
-        If dgvJournalEntries.SelectedRows.Count = 0 Then
-            MessageBox.Show("Pilih transaksi yang ingin di-reverse.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
-
-        Dim journalID As Integer = Convert.ToInt32(dgvJournalEntries.SelectedRows(0).Cells("journal_id").Value)
-        Dim query As String = "UPDATE journal_entries SET status = 'NEW' WHERE journal_id = @journal_id AND status = 'APR'"
-
-        Using conn As New MySqlConnection(connectionString)
-            Try
-                conn.Open()
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@journal_id", journalID)
-                    Dim affected As Integer = cmd.ExecuteNonQuery()
-                    If affected = 0 Then
-                        MessageBox.Show("Transaksi tidak dapat direverse karena status tidak 'APR'.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Exit Sub
-                    End If
-                End Using
-                MessageBox.Show("Transaksi berhasil di-reverse.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBox.Show("Error reverse transaksi: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End Using
-
-        LoadJournalEntries()
+        UpdateTransactionStatus("NEW", "APR")
     End Sub
 
-    ' Event handler untuk Post transaksi (ubah status dari APR menjadi PST)
     Private Sub btnPostJournal_Click(sender As Object, e As EventArgs) Handles btnPostJournal.Click
-        If dgvJournalEntries.SelectedRows.Count = 0 Then
-            MessageBox.Show("Pilih transaksi yang ingin dipost.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
+        UpdateTransactionStatus("PST", "APR")
+    End Sub
 
-        Dim journalID As Integer = Convert.ToInt32(dgvJournalEntries.SelectedRows(0).Cells("journal_id").Value)
-        Dim query As String = "UPDATE journal_entries SET status = 'PST' WHERE journal_id = @journal_id AND status = 'APR'"
+    ' ==============================
+    ' TAB 4: LAPORAN
+    ' ==============================
 
+    ' Muat laporan dasar (tanpa filter khusus) ke DataGridView: dgvLaporan
+    Private Sub LoadLaporan()
+        Dim query As String = "SELECT branch_id, ledger_id, SUM(debit) AS TotalDebit, SUM(credit) AS TotalCredit FROM journal_entries GROUP BY branch_id, ledger_id"
+        dgvLaporan.DataSource = GetData(query)
+    End Sub
+
+    ' Generate laporan berdasarkan periode (dan filter opsional)
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim startDate As DateTime = dtpPeriode.Value
+        Dim endDate As DateTime = DateTime.Now ' Bisa diganti dengan kontrol tambahan untuk tanggal akhir jika diperlukan
+        Dim query As String = "SELECT branch_id, ledger_id, SUM(debit) AS TotalDebit, SUM(credit) AS TotalCredit " &
+                              "FROM journal_entries WHERE transaction_date BETWEEN @startDate AND @endDate " &
+                              "GROUP BY branch_id, ledger_id"
         Using conn As New MySqlConnection(connectionString)
-            Try
-                conn.Open()
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@journal_id", journalID)
-                    Dim affected As Integer = cmd.ExecuteNonQuery()
-                    If affected = 0 Then
-                        MessageBox.Show("Gagal posting transaksi. Pastikan status transaksi adalah 'APR'.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Exit Sub
-                    End If
-                End Using
-                MessageBox.Show("Transaksi berhasil dipost.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBox.Show("Error post transaksi: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+            conn.Open()
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@startDate", startDate)
+                cmd.Parameters.AddWithValue("@endDate", endDate)
+                Dim adapter As New MySqlDataAdapter(cmd)
+                Dim dt As New DataTable()
+                adapter.Fill(dt)
+                dgvLaporan.DataSource = dt
+            End Using
         End Using
 
-        LoadJournalEntries()
+        ' Perbarui grafik saldo bank setelah laporan di-load
+        LoadBankBalances()
+    End Sub
+
+    ' Muat saldo bank ke Chart: chartGrafikSaldo
+    Private Sub LoadBankBalances()
+        Using conn As New MySqlConnection(connectionString)
+            conn.Open()
+            Dim query As String = "SELECT ledger_id, balance FROM bank_balances"
+            Using cmd As New MySqlCommand(query, conn)
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    ' Pastikan Chart memiliki setidaknya satu series. Misalnya: Series dengan index = 0
+                    chartGrafikSaldo.Series(0).Points.Clear()
+                    While reader.Read()
+                        chartGrafikSaldo.Series(0).Points.AddXY(reader("ledger_id").ToString(), Convert.ToDecimal(reader("balance")))
+                    End While
+                End Using
+            End Using
+        End Using
     End Sub
 
 End Class
