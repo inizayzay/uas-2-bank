@@ -78,15 +78,16 @@ Partial Class BankGeneralLedgerApp
         Me.dtpPeriode = New System.Windows.Forms.DateTimePicker()
         Me.cmbCabang = New System.Windows.Forms.ComboBox()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.btnhapus = New System.Windows.Forms.Button()
-        Me.btnedit = New System.Windows.Forms.Button()
-        Me.btnsimpan = New System.Windows.Forms.Button()
-        Me.txtnama = New System.Windows.Forms.TextBox()
-        Me.txtcode = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
+        Me.btnDeleteCostCenter = New System.Windows.Forms.Button()
+        Me.btnEditCostCenter = New System.Windows.Forms.Button()
+        Me.btnAddCostCenter = New System.Windows.Forms.Button()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.cbtDepartmentCC = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.MySqlDataAdapter1 = New MySql.Data.MySqlClient.MySqlDataAdapter()
+        Me.cbtBranchCC = New System.Windows.Forms.ComboBox()
+        Me.cbtDepartmenthCC = New System.Windows.Forms.ComboBox()
+        Me.txtCCName = New System.Windows.Forms.TextBox()
+        Me.dgvMasterCostCenter = New System.Windows.Forms.DataGridView()
         Me.header.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbTransaksi.SuspendLayout()
@@ -103,7 +104,7 @@ Partial Class BankGeneralLedgerApp
         CType(Me.dgvLaporan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbLaporan.SuspendLayout()
         Me.TabPage1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvMasterCostCenter, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'header
@@ -669,97 +670,110 @@ Partial Class BankGeneralLedgerApp
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.DataGridView1)
-        Me.TabPage1.Controls.Add(Me.btnhapus)
-        Me.TabPage1.Controls.Add(Me.btnedit)
-        Me.TabPage1.Controls.Add(Me.btnsimpan)
-        Me.TabPage1.Controls.Add(Me.txtnama)
-        Me.TabPage1.Controls.Add(Me.txtcode)
-        Me.TabPage1.Controls.Add(Me.Label15)
+        Me.TabPage1.Controls.Add(Me.btnDeleteCostCenter)
+        Me.TabPage1.Controls.Add(Me.btnEditCostCenter)
+        Me.TabPage1.Controls.Add(Me.btnAddCostCenter)
+        Me.TabPage1.Controls.Add(Me.Label16)
+        Me.TabPage1.Controls.Add(Me.cbtDepartmentCC)
         Me.TabPage1.Controls.Add(Me.Label14)
+        Me.TabPage1.Controls.Add(Me.cbtBranchCC)
+        Me.TabPage1.Controls.Add(Me.cbtDepartmenthCC)
+        Me.TabPage1.Controls.Add(Me.txtCCName)
+        Me.TabPage1.Controls.Add(Me.dgvMasterCostCenter)
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1.Size = New System.Drawing.Size(629, 513)
         Me.TabPage1.TabIndex = 4
-        Me.TabPage1.Text = "Ledger Account"
+        Me.TabPage1.Text = "Cost Center"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'btnDeleteCostCenter
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(25, 135)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(569, 250)
-        Me.DataGridView1.TabIndex = 8
+        Me.btnDeleteCostCenter.Location = New System.Drawing.Point(357, 144)
+        Me.btnDeleteCostCenter.Name = "btnDeleteCostCenter"
+        Me.btnDeleteCostCenter.Size = New System.Drawing.Size(75, 23)
+        Me.btnDeleteCostCenter.TabIndex = 11
+        Me.btnDeleteCostCenter.Text = "Hapus"
+        Me.btnDeleteCostCenter.UseVisualStyleBackColor = True
         '
-        'btnhapus
+        'btnEditCostCenter
         '
-        Me.btnhapus.Location = New System.Drawing.Point(409, 106)
-        Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(75, 23)
-        Me.btnhapus.TabIndex = 7
-        Me.btnhapus.Text = "Hapus"
-        Me.btnhapus.UseVisualStyleBackColor = True
+        Me.btnEditCostCenter.Location = New System.Drawing.Point(252, 144)
+        Me.btnEditCostCenter.Name = "btnEditCostCenter"
+        Me.btnEditCostCenter.Size = New System.Drawing.Size(75, 23)
+        Me.btnEditCostCenter.TabIndex = 10
+        Me.btnEditCostCenter.Text = "Edit"
+        Me.btnEditCostCenter.UseVisualStyleBackColor = True
         '
-        'btnedit
+        'btnAddCostCenter
         '
-        Me.btnedit.Location = New System.Drawing.Point(247, 106)
-        Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(75, 23)
-        Me.btnedit.TabIndex = 6
-        Me.btnedit.Text = "Edit"
-        Me.btnedit.UseVisualStyleBackColor = True
+        Me.btnAddCostCenter.Location = New System.Drawing.Point(145, 144)
+        Me.btnAddCostCenter.Name = "btnAddCostCenter"
+        Me.btnAddCostCenter.Size = New System.Drawing.Size(75, 23)
+        Me.btnAddCostCenter.TabIndex = 9
+        Me.btnAddCostCenter.Text = "Simpan"
+        Me.btnAddCostCenter.UseVisualStyleBackColor = True
         '
-        'btnsimpan
+        'Label16
         '
-        Me.btnsimpan.Location = New System.Drawing.Point(115, 106)
-        Me.btnsimpan.Name = "btnsimpan"
-        Me.btnsimpan.Size = New System.Drawing.Size(75, 23)
-        Me.btnsimpan.TabIndex = 5
-        Me.btnsimpan.Text = "Simpan"
-        Me.btnsimpan.UseVisualStyleBackColor = True
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(43, 104)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(44, 16)
+        Me.Label16.TabIndex = 8
+        Me.Label16.Text = "Name"
         '
-        'txtnama
+        'cbtDepartmentCC
         '
-        Me.txtnama.Location = New System.Drawing.Point(115, 67)
-        Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(100, 22)
-        Me.txtnama.TabIndex = 4
-        '
-        'txtcode
-        '
-        Me.txtcode.Location = New System.Drawing.Point(115, 20)
-        Me.txtcode.Name = "txtcode"
-        Me.txtcode.Size = New System.Drawing.Size(100, 22)
-        Me.txtcode.TabIndex = 3
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(22, 73)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(44, 16)
-        Me.Label15.TabIndex = 2
-        Me.Label15.Text = "Nama"
+        Me.cbtDepartmentCC.AutoSize = True
+        Me.cbtDepartmentCC.Location = New System.Drawing.Point(40, 66)
+        Me.cbtDepartmentCC.Name = "cbtDepartmentCC"
+        Me.cbtDepartmentCC.Size = New System.Drawing.Size(77, 16)
+        Me.cbtDepartmentCC.TabIndex = 7
+        Me.cbtDepartmentCC.Text = "Department"
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(26, 26)
+        Me.Label14.Location = New System.Drawing.Point(40, 31)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(40, 16)
-        Me.Label14.TabIndex = 1
-        Me.Label14.Text = "Code"
+        Me.Label14.Size = New System.Drawing.Size(49, 16)
+        Me.Label14.TabIndex = 6
+        Me.Label14.Text = "Branch"
         '
-        'MySqlDataAdapter1
+        'cbtBranchCC
         '
-        Me.MySqlDataAdapter1.DeleteCommand = Nothing
-        Me.MySqlDataAdapter1.InsertCommand = Nothing
-        Me.MySqlDataAdapter1.SelectCommand = Nothing
-        Me.MySqlDataAdapter1.UpdateCommand = Nothing
+        Me.cbtBranchCC.FormattingEnabled = True
+        Me.cbtBranchCC.Location = New System.Drawing.Point(145, 31)
+        Me.cbtBranchCC.Name = "cbtBranchCC"
+        Me.cbtBranchCC.Size = New System.Drawing.Size(182, 24)
+        Me.cbtBranchCC.TabIndex = 5
+        '
+        'cbtDepartmenthCC
+        '
+        Me.cbtDepartmenthCC.FormattingEnabled = True
+        Me.cbtDepartmenthCC.Location = New System.Drawing.Point(145, 66)
+        Me.cbtDepartmenthCC.Name = "cbtDepartmenthCC"
+        Me.cbtDepartmenthCC.Size = New System.Drawing.Size(182, 24)
+        Me.cbtDepartmenthCC.TabIndex = 4
+        '
+        'txtCCName
+        '
+        Me.txtCCName.Location = New System.Drawing.Point(146, 104)
+        Me.txtCCName.Name = "txtCCName"
+        Me.txtCCName.Size = New System.Drawing.Size(182, 22)
+        Me.txtCCName.TabIndex = 3
+        '
+        'dgvMasterCostCenter
+        '
+        Me.dgvMasterCostCenter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvMasterCostCenter.Location = New System.Drawing.Point(11, 194)
+        Me.dgvMasterCostCenter.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgvMasterCostCenter.Name = "dgvMasterCostCenter"
+        Me.dgvMasterCostCenter.RowHeadersWidth = 51
+        Me.dgvMasterCostCenter.Size = New System.Drawing.Size(611, 288)
+        Me.dgvMasterCostCenter.TabIndex = 2
         '
         'BankGeneralLedgerApp
         '
@@ -795,7 +809,7 @@ Partial Class BankGeneralLedgerApp
         Me.gbLaporan.PerformLayout()
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvMasterCostCenter, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -852,13 +866,14 @@ Partial Class BankGeneralLedgerApp
     Friend WithEvents chartGrafikSaldo As DataVisualization.Charting.Chart
     Friend WithEvents dgvLaporan As DataGridView
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents Label15 As Label
+    Friend WithEvents dgvMasterCostCenter As DataGridView
+    Friend WithEvents Label16 As Label
+    Friend WithEvents cbtDepartmentCC As Label
     Friend WithEvents Label14 As Label
-    Friend WithEvents txtcode As TextBox
-    Friend WithEvents txtnama As TextBox
-    Friend WithEvents btnhapus As Button
-    Friend WithEvents btnedit As Button
-    Friend WithEvents btnsimpan As Button
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents MySqlDataAdapter1 As MySql.Data.MySqlClient.MySqlDataAdapter
+    Friend WithEvents cbtBranchCC As ComboBox
+    Friend WithEvents cbtDepartmenthCC As ComboBox
+    Friend WithEvents txtCCName As TextBox
+    Friend WithEvents btnAddCostCenter As Button
+    Friend WithEvents btnEditCostCenter As Button
+    Friend WithEvents btnDeleteCostCenter As Button
 End Class
