@@ -32,6 +32,7 @@ Partial Class CostCenter
         Me.cbtDepartmenthCC = New System.Windows.Forms.ComboBox()
         Me.txtCCName = New System.Windows.Forms.TextBox()
         Me.dgvMasterCostCenter = New System.Windows.Forms.DataGridView()
+        Me.ButtonBack = New System.Windows.Forms.Button()
         CType(Me.dgvMasterCostCenter, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -122,11 +123,21 @@ Partial Class CostCenter
         Me.dgvMasterCostCenter.Size = New System.Drawing.Size(611, 288)
         Me.dgvMasterCostCenter.TabIndex = 12
         '
+        'ButtonBack
+        '
+        Me.ButtonBack.Location = New System.Drawing.Point(13, 15)
+        Me.ButtonBack.Name = "ButtonBack"
+        Me.ButtonBack.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonBack.TabIndex = 22
+        Me.ButtonBack.Text = "Kembali"
+        Me.ButtonBack.UseVisualStyleBackColor = True
+        '
         'CostCenter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ButtonBack)
         Me.Controls.Add(Me.btnDeleteCostCenter)
         Me.Controls.Add(Me.btnEditCostCenter)
         Me.Controls.Add(Me.btnAddCostCenter)
@@ -155,4 +166,5 @@ Partial Class CostCenter
     Friend WithEvents cbtDepartmenthCC As ComboBox
     Friend WithEvents txtCCName As TextBox
     Friend WithEvents dgvMasterCostCenter As DataGridView
+    Friend WithEvents ButtonBack As Button
 End Class

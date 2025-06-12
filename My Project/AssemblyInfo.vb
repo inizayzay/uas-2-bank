@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("UASS")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("UASS")>
-<Assembly: AssemblyCopyright("Copyright ©  2025")>
-<Assembly: AssemblyTrademark("")>
+'<Assembly: AssemblyTitle("UASS")>
+'<Assembly: AssemblyDescription("")>
+'<Assembly: AssemblyCompany("")>
+'<Assembly: AssemblyProduct("UASS")>
+'<Assembly: AssemblyCopyright("Copyright ©  2025")>
+'<Assembly: AssemblyTrademark("")>
 
-<Assembly: ComVisible(False)>
+'<Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("6ffe69f4-852e-4133-84c4-765ad027bcc3")>
+'<Assembly: Guid("6ffe69f4-852e-4133-84c4-765ad027bcc3")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -28,5 +28,5 @@ Imports System.Runtime.InteropServices
 '      Revision
 '
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+'<Assembly: AssemblyVersion("1.0.0.0")>
+'<Assembly: AssemblyFileVersion("1.0.0.0")>

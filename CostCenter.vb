@@ -1,6 +1,11 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class CostCenter
+    Private Sub ButtonBack_Click(sender As Object, e As EventArgs) Handles ButtonBack.Click
+        Dim cc = New BankGeneralLedgerApp()
+        cc.Show()
+        Me.Hide()
+    End Sub
 
     Private connectionString As String = "server=localhost;user id=root;database=general_ledger_db;password=;"
 

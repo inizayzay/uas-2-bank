@@ -30,6 +30,7 @@ Partial Class ledgeraccounts
         Me.txtcode = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.ButtonBack = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -79,7 +80,7 @@ Partial Class ledgeraccounts
         '
         'txtcode
         '
-        Me.txtcode.Location = New System.Drawing.Point(155, 23)
+        Me.txtcode.Location = New System.Drawing.Point(155, 49)
         Me.txtcode.Name = "txtcode"
         Me.txtcode.Size = New System.Drawing.Size(100, 22)
         Me.txtcode.TabIndex = 11
@@ -96,17 +97,27 @@ Partial Class ledgeraccounts
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(59, 29)
+        Me.Label14.Location = New System.Drawing.Point(59, 55)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(40, 16)
         Me.Label14.TabIndex = 9
         Me.Label14.Text = "Code"
+        '
+        'ButtonBack
+        '
+        Me.ButtonBack.Location = New System.Drawing.Point(38, 12)
+        Me.ButtonBack.Name = "ButtonBack"
+        Me.ButtonBack.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonBack.TabIndex = 23
+        Me.ButtonBack.Text = "Kembali"
+        Me.ButtonBack.UseVisualStyleBackColor = True
         '
         'ledgeraccounts
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ButtonBack)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.btnhapus)
         Me.Controls.Add(Me.btnedit)
@@ -131,4 +142,5 @@ Partial Class ledgeraccounts
     Friend WithEvents txtcode As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Label14 As Label
+    Friend WithEvents ButtonBack As Button
 End Class

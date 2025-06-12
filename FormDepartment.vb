@@ -1,6 +1,12 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class FormDepartment
+    Private Sub ButtonBack_Click(sender As Object, e As EventArgs) Handles ButtonBack.Click
+        Dim cc = New BankGeneralLedgerApp()
+        cc.Show()
+        Me.Hide()
+    End Sub
+
     Private Sub FormMasterDepartment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If conn.State = ConnectionState.Closed Then conn.Open()
         TampilBranch()

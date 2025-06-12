@@ -293,4 +293,22 @@ Public Class BankGeneralLedgerApp
             End Using
         End Using
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim ledger = New ledgeraccounts()
+        ledger.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim cc = New CostCenter()
+        cc.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim cc = New FormDepartment()
+        cc.Show()
+        Me.Hide()
+    End Sub
 End Class
