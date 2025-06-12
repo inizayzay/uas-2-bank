@@ -22,9 +22,9 @@ Partial Class BankGeneralLedgerApp
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.header = New System.Windows.Forms.Panel()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -77,17 +77,6 @@ Partial Class BankGeneralLedgerApp
         Me.Label13 = New System.Windows.Forms.Label()
         Me.dtpPeriode = New System.Windows.Forms.DateTimePicker()
         Me.cmbCabang = New System.Windows.Forms.ComboBox()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.btnDeleteCostCenter = New System.Windows.Forms.Button()
-        Me.btnEditCostCenter = New System.Windows.Forms.Button()
-        Me.btnAddCostCenter = New System.Windows.Forms.Button()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.cbtDepartmentCC = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.cbtBranchCC = New System.Windows.Forms.ComboBox()
-        Me.cbtDepartmenthCC = New System.Windows.Forms.ComboBox()
-        Me.txtCCName = New System.Windows.Forms.TextBox()
-        Me.dgvMasterCostCenter = New System.Windows.Forms.DataGridView()
         Me.header.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbTransaksi.SuspendLayout()
@@ -103,8 +92,6 @@ Partial Class BankGeneralLedgerApp
         CType(Me.chartGrafikSaldo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvLaporan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbLaporan.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        CType(Me.dgvMasterCostCenter, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'header
@@ -361,7 +348,6 @@ Partial Class BankGeneralLedgerApp
         Me.TabControl1.Controls.Add(Me.tabDataJurnal)
         Me.TabControl1.Controls.Add(Me.tabTransaksi)
         Me.TabControl1.Controls.Add(Me.tabLaporan)
-        Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Location = New System.Drawing.Point(17, 53)
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabControl1.Name = "TabControl1"
@@ -580,17 +566,17 @@ Partial Class BankGeneralLedgerApp
         '
         'chartGrafikSaldo
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.chartGrafikSaldo.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.chartGrafikSaldo.Legends.Add(Legend1)
+        ChartArea2.Name = "ChartArea1"
+        Me.chartGrafikSaldo.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.chartGrafikSaldo.Legends.Add(Legend2)
         Me.chartGrafikSaldo.Location = New System.Drawing.Point(8, 356)
         Me.chartGrafikSaldo.Margin = New System.Windows.Forms.Padding(4)
         Me.chartGrafikSaldo.Name = "chartGrafikSaldo"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.chartGrafikSaldo.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.chartGrafikSaldo.Series.Add(Series2)
         Me.chartGrafikSaldo.Size = New System.Drawing.Size(611, 154)
         Me.chartGrafikSaldo.TabIndex = 7
         Me.chartGrafikSaldo.Text = "Chart1"
@@ -668,113 +654,6 @@ Partial Class BankGeneralLedgerApp
         Me.cmbCabang.Size = New System.Drawing.Size(160, 24)
         Me.cmbCabang.TabIndex = 2
         '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.btnDeleteCostCenter)
-        Me.TabPage1.Controls.Add(Me.btnEditCostCenter)
-        Me.TabPage1.Controls.Add(Me.btnAddCostCenter)
-        Me.TabPage1.Controls.Add(Me.Label16)
-        Me.TabPage1.Controls.Add(Me.cbtDepartmentCC)
-        Me.TabPage1.Controls.Add(Me.Label14)
-        Me.TabPage1.Controls.Add(Me.cbtBranchCC)
-        Me.TabPage1.Controls.Add(Me.cbtDepartmenthCC)
-        Me.TabPage1.Controls.Add(Me.txtCCName)
-        Me.TabPage1.Controls.Add(Me.dgvMasterCostCenter)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(629, 513)
-        Me.TabPage1.TabIndex = 4
-        Me.TabPage1.Text = "Cost Center"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'btnDeleteCostCenter
-        '
-        Me.btnDeleteCostCenter.Location = New System.Drawing.Point(357, 144)
-        Me.btnDeleteCostCenter.Name = "btnDeleteCostCenter"
-        Me.btnDeleteCostCenter.Size = New System.Drawing.Size(75, 23)
-        Me.btnDeleteCostCenter.TabIndex = 11
-        Me.btnDeleteCostCenter.Text = "Hapus"
-        Me.btnDeleteCostCenter.UseVisualStyleBackColor = True
-        '
-        'btnEditCostCenter
-        '
-        Me.btnEditCostCenter.Location = New System.Drawing.Point(252, 144)
-        Me.btnEditCostCenter.Name = "btnEditCostCenter"
-        Me.btnEditCostCenter.Size = New System.Drawing.Size(75, 23)
-        Me.btnEditCostCenter.TabIndex = 10
-        Me.btnEditCostCenter.Text = "Edit"
-        Me.btnEditCostCenter.UseVisualStyleBackColor = True
-        '
-        'btnAddCostCenter
-        '
-        Me.btnAddCostCenter.Location = New System.Drawing.Point(145, 144)
-        Me.btnAddCostCenter.Name = "btnAddCostCenter"
-        Me.btnAddCostCenter.Size = New System.Drawing.Size(75, 23)
-        Me.btnAddCostCenter.TabIndex = 9
-        Me.btnAddCostCenter.Text = "Simpan"
-        Me.btnAddCostCenter.UseVisualStyleBackColor = True
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(43, 104)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(44, 16)
-        Me.Label16.TabIndex = 8
-        Me.Label16.Text = "Name"
-        '
-        'cbtDepartmentCC
-        '
-        Me.cbtDepartmentCC.AutoSize = True
-        Me.cbtDepartmentCC.Location = New System.Drawing.Point(40, 66)
-        Me.cbtDepartmentCC.Name = "cbtDepartmentCC"
-        Me.cbtDepartmentCC.Size = New System.Drawing.Size(77, 16)
-        Me.cbtDepartmentCC.TabIndex = 7
-        Me.cbtDepartmentCC.Text = "Department"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(40, 31)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(49, 16)
-        Me.Label14.TabIndex = 6
-        Me.Label14.Text = "Branch"
-        '
-        'cbtBranchCC
-        '
-        Me.cbtBranchCC.FormattingEnabled = True
-        Me.cbtBranchCC.Location = New System.Drawing.Point(145, 31)
-        Me.cbtBranchCC.Name = "cbtBranchCC"
-        Me.cbtBranchCC.Size = New System.Drawing.Size(182, 24)
-        Me.cbtBranchCC.TabIndex = 5
-        '
-        'cbtDepartmenthCC
-        '
-        Me.cbtDepartmenthCC.FormattingEnabled = True
-        Me.cbtDepartmenthCC.Location = New System.Drawing.Point(145, 66)
-        Me.cbtDepartmenthCC.Name = "cbtDepartmenthCC"
-        Me.cbtDepartmenthCC.Size = New System.Drawing.Size(182, 24)
-        Me.cbtDepartmenthCC.TabIndex = 4
-        '
-        'txtCCName
-        '
-        Me.txtCCName.Location = New System.Drawing.Point(146, 104)
-        Me.txtCCName.Name = "txtCCName"
-        Me.txtCCName.Size = New System.Drawing.Size(182, 22)
-        Me.txtCCName.TabIndex = 3
-        '
-        'dgvMasterCostCenter
-        '
-        Me.dgvMasterCostCenter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvMasterCostCenter.Location = New System.Drawing.Point(11, 194)
-        Me.dgvMasterCostCenter.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgvMasterCostCenter.Name = "dgvMasterCostCenter"
-        Me.dgvMasterCostCenter.RowHeadersWidth = 51
-        Me.dgvMasterCostCenter.Size = New System.Drawing.Size(611, 288)
-        Me.dgvMasterCostCenter.TabIndex = 2
-        '
         'BankGeneralLedgerApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -807,9 +686,6 @@ Partial Class BankGeneralLedgerApp
         CType(Me.dgvLaporan, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbLaporan.ResumeLayout(False)
         Me.gbLaporan.PerformLayout()
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
-        CType(Me.dgvMasterCostCenter, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -865,15 +741,4 @@ Partial Class BankGeneralLedgerApp
     Friend WithEvents gbLaporan As GroupBox
     Friend WithEvents chartGrafikSaldo As DataVisualization.Charting.Chart
     Friend WithEvents dgvLaporan As DataGridView
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents dgvMasterCostCenter As DataGridView
-    Friend WithEvents Label16 As Label
-    Friend WithEvents cbtDepartmentCC As Label
-    Friend WithEvents Label14 As Label
-    Friend WithEvents cbtBranchCC As ComboBox
-    Friend WithEvents cbtDepartmenthCC As ComboBox
-    Friend WithEvents txtCCName As TextBox
-    Friend WithEvents btnAddCostCenter As Button
-    Friend WithEvents btnEditCostCenter As Button
-    Friend WithEvents btnDeleteCostCenter As Button
 End Class
