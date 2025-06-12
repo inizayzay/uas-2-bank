@@ -293,4 +293,7 @@ Public Class BankGeneralLedgerApp
         End Using
     End Sub
 
+    Private Sub header_Paint(sender As Object, e As PaintEventArgs) Handles header.Paint
+
+    End Sub
 End Class
