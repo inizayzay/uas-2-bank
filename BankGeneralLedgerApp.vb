@@ -10,9 +10,8 @@ Public Class BankGeneralLedgerApp
     ' Connection string – sesuaikan password dan detail MySQL Anda.
     Private connectionString As String = "server=localhost;user id=root;database=general_ledger_db;password=;"
 
-    ' -----------------------------------------------------------------
     ' FORM LOAD: Panggil semua metode untuk mengisi tiap tab di-load
-    ' -----------------------------------------------------------------
+
     Private Sub BankGeneralLedgerApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadMasterBranch()
         LoadDataJurnal()
@@ -21,9 +20,8 @@ Public Class BankGeneralLedgerApp
 
     End Sub
 
-    ' -----------------------------------------------------------------
     ' Helper Function: Eksekusi query dan kembalikan DataTable
-    ' -----------------------------------------------------------------
+
     Private Function GetData(query As String) As DataTable
         Dim dt As New DataTable()
         Using conn As New MySqlConnection(connectionString)
@@ -36,9 +34,7 @@ Public Class BankGeneralLedgerApp
         Return dt
     End Function
 
-    ' ==============================
     ' TAB 1: MASTER BRANCH
-    ' ==============================
 
     ' Muat data branches pada DataGridView: dgvMasterBranch
     Private Sub LoadMasterBranch()
@@ -61,7 +57,7 @@ Public Class BankGeneralLedgerApp
         MessageBox.Show("Branch berhasil ditambahkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    ' --- UPDATE Branch ---
+    ' UPDATE Branch
     Private Sub btnEditBranch_Click(sender As Object, e As EventArgs) Handles btnEditBranch.Click
         If dgvMasterBranch.SelectedRows.Count = 0 Then
             MessageBox.Show("Pilih branch yang ingin diedit!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -83,7 +79,7 @@ Public Class BankGeneralLedgerApp
         MessageBox.Show("Branch berhasil diperbarui!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    ' --- DELETE Branch ---
+    ' DELETE Branch
     Private Sub btnDeleteBranch_Click(sender As Object, e As EventArgs) Handles btnDeleteBranch.Click
         If dgvMasterBranch.SelectedRows.Count = 0 Then
             MessageBox.Show("Pilih branch yang ingin dihapus!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -103,9 +99,9 @@ Public Class BankGeneralLedgerApp
         MessageBox.Show("Branch dihapus!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    ' ==============================
+
     ' TAB 2: DATA JURNAL
-    ' ==============================
+
 
     ' Muat semua data jurnal di DataGridView: dgvJournalEntri
     Private Sub LoadDataJurnal()
@@ -127,15 +123,51 @@ Public Class BankGeneralLedgerApp
         MessageBox.Show("Navigasi ke halaman berikutnya (pagination dikembangkan jika diperlukan).")
     End Sub
 
-    ' ==============================
+
     ' TAB 3: TRANSAKSI
-    ' ==============================
+
 
     ' Muat transaksi dengan status NEW ke DataGridView: dgvTransaksi
     Private Sub LoadTransaksi()
         Dim query As String = "SELECT * FROM journal_entries WHERE status = 'NEW' ORDER BY created_at DESC"
         dgvTransaksi.DataSource = GetData(query)
+        Dim conn As New MySqlConnection(connectionString)
+        conn.Open()
+
+        cbBranchID.Items.Clear()
+
+        Dim dt_branch As DataTable = GetData("SELECT * FROM branches")
+        If dt_branch IsNot Nothing Then
+            cbBranchID.DataSource = dt_branch
+            cbBranchID.DisplayMember = "branch_name"
+            cbBranchID.ValueMember = "branch_id"
+        End If
+
+
+        ' --- Isi cbLedgerID ---
+        Dim dt_ledger As DataTable = GetData("SELECT * FROM ledger_accounts")
+        If dt_ledger IsNot Nothing Then
+            cbLedgerID.DataSource = dt_ledger
+            cbLedgerID.DisplayMember = "account_name"
+            cbLedgerID.ValueMember = "ledger_id"
+        End If
+
+        ' --- Isi cbCostCenterID ---
+        Dim dt_costcenter As DataTable = GetData("SELECT * FROM cost_centers")
+        If dt_costcenter IsNot Nothing Then
+            cbCostCenterID.DataSource = dt_costcenter
+            cbCostCenterID.DisplayMember = "cost_center_name"
+            cbCostCenterID.ValueMember = "cost_center_id"
+        End If
+
+        conn.Close()
     End Sub
+
+
+
+
+
+
 
     ' Tambah transaksi melalui stored procedure sp_insert_bank_transaction
     Private Sub btnAddJournal_Click(sender As Object, e As EventArgs) Handles btnAddJournal.Click
@@ -148,15 +180,15 @@ Public Class BankGeneralLedgerApp
         Dim creditAmount As Decimal
         Dim createdBy As String = txtCreatedBy.Text.Trim()
 
-        If Not Integer.TryParse(txtTransaksiBranchID.Text, branchID) Then
+        If Not Integer.TryParse(cbBranchID.SelectedItem?.ToString(), branchID) Then
             MessageBox.Show("Branch ID tidak valid!")
             Exit Sub
         End If
-        If Not Integer.TryParse(txtLedgerID.Text, ledgerID) Then
+        If Not Integer.TryParse(cbLedgerID.Text, ledgerID) Then
             MessageBox.Show("Ledger ID tidak valid!")
             Exit Sub
         End If
-        If Not Integer.TryParse(txtCostCenterID.Text, costCenterID) Then
+        If Not Integer.TryParse(cbCostCenterID.SelectedItem?.ToString(), costCenterID) Then
             MessageBox.Show("Cost Center ID tidak valid!")
             Exit Sub
         End If
@@ -244,9 +276,9 @@ Public Class BankGeneralLedgerApp
         UpdateTransactionStatus("PST", "APR")
     End Sub
 
-    ' ==============================
+
     ' TAB 4: LAPORAN
-    ' ==============================
+
 
     ' Muat laporan dasar (tanpa filter khusus) ke DataGridView: dgvLaporan
     Private Sub LoadLaporan()
@@ -310,5 +342,9 @@ Public Class BankGeneralLedgerApp
         Dim cc = New FormDepartment()
         cc.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub gbTransaksi_Enter(sender As Object, e As EventArgs) Handles gbTransaksi.Enter
+
     End Sub
 End Class

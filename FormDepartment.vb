@@ -92,18 +92,35 @@ Public Class FormDepartment
         ClearForm()
     End Sub
 
+    Private Function GetData(query As String) As DataTable
+        Dim dt As New DataTable()
+        conn.Open()
+        Using cmd As New MySqlCommand(query, conn)
+            Dim adapter As New MySqlDataAdapter(cmd)
+            adapter.Fill(dt)
+        End Using
+        Return dt
+    End Function
+
     Private Sub dgvDepartment_SelectionChanged(sender As Object, e As EventArgs) Handles dgvDepartment.SelectionChanged
         If dgvDepartment.SelectedRows.Count > 0 Then
             txtDeptName.Text = dgvDepartment.SelectedRows(0).Cells("department_name").Value.ToString()
             Dim selectedBranchName As String = dgvDepartment.SelectedRows(0).Cells("branch_name").Value.ToString()
 
             ' Cari dan set SelectedValue berdasarkan nama cabang
-            For Each item As DataRowView In cbBranch.Items
-                If item("branch_name").ToString() = selectedBranchName Then
-                    cbBranch.SelectedValue = item("branch_id")
-                    Exit For
-                End If
-            Next
+            'For Each item As DataRowView In cbBranch.Items
+            '    If item("branch_name").ToString() = selectedBranchName Then
+            '        cbBranch.SelectedValue = item("branch_id")
+            '        Exit For
+            '    End If
+            'Next
+
+            Dim dt_branch As DataTable = GetData("SELECT * FROM branches")
+            If dt_branch IsNot Nothing Then
+                cbBranch.DataSource = dt_branch
+                cbBranch.DisplayMember = "branch_name"
+                cbBranch.ValueMember = "branch_id"
+            End If
         End If
     End Sub
 

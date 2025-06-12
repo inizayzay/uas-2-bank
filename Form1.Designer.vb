@@ -46,16 +46,11 @@ Partial Class BankGeneralLedgerApp
         Me.txtDebit = New System.Windows.Forms.TextBox()
         Me.btnPostJournal = New System.Windows.Forms.Button()
         Me.btnReverseJournal = New System.Windows.Forms.Button()
-        Me.txtCostCenterID = New System.Windows.Forms.TextBox()
-        Me.txtLedgerID = New System.Windows.Forms.TextBox()
-        Me.txtDepartmentID = New System.Windows.Forms.TextBox()
-        Me.txtTransaksiBranchID = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tabDataJurnal = New System.Windows.Forms.TabPage()
         Me.btnSelanjutnya = New System.Windows.Forms.Button()
@@ -70,7 +65,6 @@ Partial Class BankGeneralLedgerApp
         Me.btnAddBranch = New System.Windows.Forms.Button()
         Me.txtAlamat = New System.Windows.Forms.TextBox()
         Me.txtBranchName = New System.Windows.Forms.TextBox()
-        Me.txtMasterBranchID = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -78,6 +72,9 @@ Partial Class BankGeneralLedgerApp
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.cbBranchID = New System.Windows.Forms.ComboBox()
+        Me.cbLedgerID = New System.Windows.Forms.ComboBox()
+        Me.cbCostCenterID = New System.Windows.Forms.ComboBox()
         Me.header.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabLaporan.SuspendLayout()
@@ -100,7 +97,7 @@ Partial Class BankGeneralLedgerApp
         Me.header.Controls.Add(Me.Label8)
         Me.header.Controls.Add(Me.PictureBox1)
         Me.header.Location = New System.Drawing.Point(16, 5)
-        Me.header.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.header.Margin = New System.Windows.Forms.Padding(4)
         Me.header.Name = "header"
         Me.header.Size = New System.Drawing.Size(627, 39)
         Me.header.TabIndex = 8
@@ -120,7 +117,7 @@ Partial Class BankGeneralLedgerApp
         '
         Me.PictureBox1.Image = Global.UASS.My.Resources.Resources.Logo
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(47, 39)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -140,9 +137,9 @@ Partial Class BankGeneralLedgerApp
         Me.tabLaporan.Controls.Add(Me.dgvLaporan)
         Me.tabLaporan.Controls.Add(Me.gbLaporan)
         Me.tabLaporan.Location = New System.Drawing.Point(4, 25)
-        Me.tabLaporan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabLaporan.Margin = New System.Windows.Forms.Padding(4)
         Me.tabLaporan.Name = "tabLaporan"
-        Me.tabLaporan.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabLaporan.Padding = New System.Windows.Forms.Padding(4)
         Me.tabLaporan.Size = New System.Drawing.Size(629, 513)
         Me.tabLaporan.TabIndex = 3
         Me.tabLaporan.Text = "Laporan"
@@ -160,7 +157,7 @@ Partial Class BankGeneralLedgerApp
         '
         Me.dgvLaporan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvLaporan.Location = New System.Drawing.Point(8, 144)
-        Me.dgvLaporan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dgvLaporan.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvLaporan.Name = "dgvLaporan"
         Me.dgvLaporan.RowHeadersWidth = 51
         Me.dgvLaporan.Size = New System.Drawing.Size(612, 204)
@@ -174,9 +171,9 @@ Partial Class BankGeneralLedgerApp
         Me.gbLaporan.Controls.Add(Me.dtpPeriode)
         Me.gbLaporan.Controls.Add(Me.cmbCabang)
         Me.gbLaporan.Location = New System.Drawing.Point(8, 7)
-        Me.gbLaporan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbLaporan.Margin = New System.Windows.Forms.Padding(4)
         Me.gbLaporan.Name = "gbLaporan"
-        Me.gbLaporan.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbLaporan.Padding = New System.Windows.Forms.Padding(4)
         Me.gbLaporan.Size = New System.Drawing.Size(612, 129)
         Me.gbLaporan.TabIndex = 5
         Me.gbLaporan.TabStop = False
@@ -195,7 +192,7 @@ Partial Class BankGeneralLedgerApp
         'btnReport
         '
         Me.btnReport.Location = New System.Drawing.Point(97, 89)
-        Me.btnReport.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnReport.Margin = New System.Windows.Forms.Padding(4)
         Me.btnReport.Name = "btnReport"
         Me.btnReport.Size = New System.Drawing.Size(100, 28)
         Me.btnReport.TabIndex = 4
@@ -215,7 +212,7 @@ Partial Class BankGeneralLedgerApp
         'dtpPeriode
         '
         Me.dtpPeriode.Location = New System.Drawing.Point(97, 57)
-        Me.dtpPeriode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpPeriode.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpPeriode.Name = "dtpPeriode"
         Me.dtpPeriode.Size = New System.Drawing.Size(265, 22)
         Me.dtpPeriode.TabIndex = 3
@@ -224,7 +221,7 @@ Partial Class BankGeneralLedgerApp
         '
         Me.cmbCabang.FormattingEnabled = True
         Me.cmbCabang.Location = New System.Drawing.Point(97, 23)
-        Me.cmbCabang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbCabang.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbCabang.Name = "cmbCabang"
         Me.cmbCabang.Size = New System.Drawing.Size(160, 24)
         Me.cmbCabang.TabIndex = 2
@@ -234,9 +231,9 @@ Partial Class BankGeneralLedgerApp
         Me.tabTransaksi.Controls.Add(Me.dgvTransaksi)
         Me.tabTransaksi.Controls.Add(Me.gbTransaksi)
         Me.tabTransaksi.Location = New System.Drawing.Point(4, 25)
-        Me.tabTransaksi.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabTransaksi.Margin = New System.Windows.Forms.Padding(4)
         Me.tabTransaksi.Name = "tabTransaksi"
-        Me.tabTransaksi.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabTransaksi.Padding = New System.Windows.Forms.Padding(4)
         Me.tabTransaksi.Size = New System.Drawing.Size(629, 513)
         Me.tabTransaksi.TabIndex = 2
         Me.tabTransaksi.Text = "Transaksi"
@@ -246,7 +243,7 @@ Partial Class BankGeneralLedgerApp
         '
         Me.dgvTransaksi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvTransaksi.Location = New System.Drawing.Point(8, 265)
-        Me.dgvTransaksi.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dgvTransaksi.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvTransaksi.Name = "dgvTransaksi"
         Me.dgvTransaksi.RowHeadersWidth = 51
         Me.dgvTransaksi.Size = New System.Drawing.Size(612, 238)
@@ -254,6 +251,9 @@ Partial Class BankGeneralLedgerApp
         '
         'gbTransaksi
         '
+        Me.gbTransaksi.Controls.Add(Me.cbCostCenterID)
+        Me.gbTransaksi.Controls.Add(Me.cbLedgerID)
+        Me.gbTransaksi.Controls.Add(Me.cbBranchID)
         Me.gbTransaksi.Controls.Add(Me.txtCreatedBy)
         Me.gbTransaksi.Controls.Add(Me.txtCredit)
         Me.gbTransaksi.Controls.Add(Me.btnRejectJournal)
@@ -262,21 +262,16 @@ Partial Class BankGeneralLedgerApp
         Me.gbTransaksi.Controls.Add(Me.txtDebit)
         Me.gbTransaksi.Controls.Add(Me.btnPostJournal)
         Me.gbTransaksi.Controls.Add(Me.btnReverseJournal)
-        Me.gbTransaksi.Controls.Add(Me.txtCostCenterID)
-        Me.gbTransaksi.Controls.Add(Me.txtLedgerID)
-        Me.gbTransaksi.Controls.Add(Me.txtDepartmentID)
-        Me.gbTransaksi.Controls.Add(Me.txtTransaksiBranchID)
         Me.gbTransaksi.Controls.Add(Me.Label7)
         Me.gbTransaksi.Controls.Add(Me.Label6)
         Me.gbTransaksi.Controls.Add(Me.Label5)
         Me.gbTransaksi.Controls.Add(Me.Label4)
         Me.gbTransaksi.Controls.Add(Me.Label3)
-        Me.gbTransaksi.Controls.Add(Me.Label2)
         Me.gbTransaksi.Controls.Add(Me.Label1)
         Me.gbTransaksi.Location = New System.Drawing.Point(8, 7)
-        Me.gbTransaksi.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbTransaksi.Margin = New System.Windows.Forms.Padding(4)
         Me.gbTransaksi.Name = "gbTransaksi"
-        Me.gbTransaksi.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbTransaksi.Padding = New System.Windows.Forms.Padding(4)
         Me.gbTransaksi.Size = New System.Drawing.Size(612, 250)
         Me.gbTransaksi.TabIndex = 9
         Me.gbTransaksi.TabStop = False
@@ -285,7 +280,7 @@ Partial Class BankGeneralLedgerApp
         'txtCreatedBy
         '
         Me.txtCreatedBy.Location = New System.Drawing.Point(176, 213)
-        Me.txtCreatedBy.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCreatedBy.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCreatedBy.Name = "txtCreatedBy"
         Me.txtCreatedBy.Size = New System.Drawing.Size(183, 22)
         Me.txtCreatedBy.TabIndex = 13
@@ -293,7 +288,7 @@ Partial Class BankGeneralLedgerApp
         'txtCredit
         '
         Me.txtCredit.Location = New System.Drawing.Point(176, 181)
-        Me.txtCredit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCredit.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCredit.Name = "txtCredit"
         Me.txtCredit.Size = New System.Drawing.Size(183, 22)
         Me.txtCredit.TabIndex = 12
@@ -301,7 +296,7 @@ Partial Class BankGeneralLedgerApp
         'btnRejectJournal
         '
         Me.btnRejectJournal.Location = New System.Drawing.Point(441, 209)
-        Me.btnRejectJournal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnRejectJournal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRejectJournal.Name = "btnRejectJournal"
         Me.btnRejectJournal.Size = New System.Drawing.Size(131, 28)
         Me.btnRejectJournal.TabIndex = 12
@@ -311,7 +306,7 @@ Partial Class BankGeneralLedgerApp
         'btnAddJournal
         '
         Me.btnAddJournal.Location = New System.Drawing.Point(441, 25)
-        Me.btnAddJournal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAddJournal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAddJournal.Name = "btnAddJournal"
         Me.btnAddJournal.Size = New System.Drawing.Size(131, 28)
         Me.btnAddJournal.TabIndex = 10
@@ -321,7 +316,7 @@ Partial Class BankGeneralLedgerApp
         'btnApproveJournal
         '
         Me.btnApproveJournal.Location = New System.Drawing.Point(441, 169)
-        Me.btnApproveJournal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnApproveJournal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnApproveJournal.Name = "btnApproveJournal"
         Me.btnApproveJournal.Size = New System.Drawing.Size(131, 28)
         Me.btnApproveJournal.TabIndex = 11
@@ -331,7 +326,7 @@ Partial Class BankGeneralLedgerApp
         'txtDebit
         '
         Me.txtDebit.Location = New System.Drawing.Point(176, 149)
-        Me.txtDebit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtDebit.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDebit.Name = "txtDebit"
         Me.txtDebit.Size = New System.Drawing.Size(183, 22)
         Me.txtDebit.TabIndex = 11
@@ -339,7 +334,7 @@ Partial Class BankGeneralLedgerApp
         'btnPostJournal
         '
         Me.btnPostJournal.Location = New System.Drawing.Point(441, 117)
-        Me.btnPostJournal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnPostJournal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPostJournal.Name = "btnPostJournal"
         Me.btnPostJournal.Size = New System.Drawing.Size(131, 28)
         Me.btnPostJournal.TabIndex = 14
@@ -349,44 +344,12 @@ Partial Class BankGeneralLedgerApp
         'btnReverseJournal
         '
         Me.btnReverseJournal.Location = New System.Drawing.Point(441, 73)
-        Me.btnReverseJournal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnReverseJournal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnReverseJournal.Name = "btnReverseJournal"
         Me.btnReverseJournal.Size = New System.Drawing.Size(131, 28)
         Me.btnReverseJournal.TabIndex = 13
         Me.btnReverseJournal.Text = "Reverse Journal"
         Me.btnReverseJournal.UseVisualStyleBackColor = True
-        '
-        'txtCostCenterID
-        '
-        Me.txtCostCenterID.Location = New System.Drawing.Point(176, 117)
-        Me.txtCostCenterID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.txtCostCenterID.Name = "txtCostCenterID"
-        Me.txtCostCenterID.Size = New System.Drawing.Size(183, 22)
-        Me.txtCostCenterID.TabIndex = 10
-        '
-        'txtLedgerID
-        '
-        Me.txtLedgerID.Location = New System.Drawing.Point(176, 85)
-        Me.txtLedgerID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.txtLedgerID.Name = "txtLedgerID"
-        Me.txtLedgerID.Size = New System.Drawing.Size(183, 22)
-        Me.txtLedgerID.TabIndex = 9
-        '
-        'txtDepartmentID
-        '
-        Me.txtDepartmentID.Location = New System.Drawing.Point(176, 53)
-        Me.txtDepartmentID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.txtDepartmentID.Name = "txtDepartmentID"
-        Me.txtDepartmentID.Size = New System.Drawing.Size(183, 22)
-        Me.txtDepartmentID.TabIndex = 8
-        '
-        'txtTransaksiBranchID
-        '
-        Me.txtTransaksiBranchID.Location = New System.Drawing.Point(176, 21)
-        Me.txtTransaksiBranchID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.txtTransaksiBranchID.Name = "txtTransaksiBranchID"
-        Me.txtTransaksiBranchID.Size = New System.Drawing.Size(183, 22)
-        Me.txtTransaksiBranchID.TabIndex = 7
         '
         'Label7
         '
@@ -438,16 +401,6 @@ Partial Class BankGeneralLedgerApp
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Ledger ID"
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 57)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(93, 16)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Department ID"
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -465,9 +418,9 @@ Partial Class BankGeneralLedgerApp
         Me.tabDataJurnal.Controls.Add(Me.btnKembali)
         Me.tabDataJurnal.Controls.Add(Me.dgvJournalEntri)
         Me.tabDataJurnal.Location = New System.Drawing.Point(4, 25)
-        Me.tabDataJurnal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabDataJurnal.Margin = New System.Windows.Forms.Padding(4)
         Me.tabDataJurnal.Name = "tabDataJurnal"
-        Me.tabDataJurnal.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabDataJurnal.Padding = New System.Windows.Forms.Padding(4)
         Me.tabDataJurnal.Size = New System.Drawing.Size(629, 513)
         Me.tabDataJurnal.TabIndex = 1
         Me.tabDataJurnal.Text = "Data Jurnal"
@@ -476,7 +429,7 @@ Partial Class BankGeneralLedgerApp
         'btnSelanjutnya
         '
         Me.btnSelanjutnya.Location = New System.Drawing.Point(519, 473)
-        Me.btnSelanjutnya.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSelanjutnya.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSelanjutnya.Name = "btnSelanjutnya"
         Me.btnSelanjutnya.Size = New System.Drawing.Size(100, 28)
         Me.btnSelanjutnya.TabIndex = 3
@@ -486,7 +439,7 @@ Partial Class BankGeneralLedgerApp
         'btnRefreshJurnal
         '
         Me.btnRefreshJurnal.Location = New System.Drawing.Point(247, 473)
-        Me.btnRefreshJurnal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnRefreshJurnal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRefreshJurnal.Name = "btnRefreshJurnal"
         Me.btnRefreshJurnal.Size = New System.Drawing.Size(131, 28)
         Me.btnRefreshJurnal.TabIndex = 2
@@ -496,7 +449,7 @@ Partial Class BankGeneralLedgerApp
         'btnKembali
         '
         Me.btnKembali.Location = New System.Drawing.Point(8, 473)
-        Me.btnKembali.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnKembali.Margin = New System.Windows.Forms.Padding(4)
         Me.btnKembali.Name = "btnKembali"
         Me.btnKembali.Size = New System.Drawing.Size(100, 28)
         Me.btnKembali.TabIndex = 1
@@ -507,7 +460,7 @@ Partial Class BankGeneralLedgerApp
         '
         Me.dgvJournalEntri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvJournalEntri.Location = New System.Drawing.Point(8, 7)
-        Me.dgvJournalEntri.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dgvJournalEntri.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvJournalEntri.Name = "dgvJournalEntri"
         Me.dgvJournalEntri.RowHeadersWidth = 51
         Me.dgvJournalEntri.Size = New System.Drawing.Size(611, 458)
@@ -518,9 +471,9 @@ Partial Class BankGeneralLedgerApp
         Me.tabMasterBranch.Controls.Add(Me.dgvMasterBranch)
         Me.tabMasterBranch.Controls.Add(Me.gbMasterBranch)
         Me.tabMasterBranch.Location = New System.Drawing.Point(4, 25)
-        Me.tabMasterBranch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabMasterBranch.Margin = New System.Windows.Forms.Padding(4)
         Me.tabMasterBranch.Name = "tabMasterBranch"
-        Me.tabMasterBranch.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabMasterBranch.Padding = New System.Windows.Forms.Padding(4)
         Me.tabMasterBranch.Size = New System.Drawing.Size(629, 513)
         Me.tabMasterBranch.TabIndex = 0
         Me.tabMasterBranch.Text = "Master Branch"
@@ -530,7 +483,7 @@ Partial Class BankGeneralLedgerApp
         '
         Me.dgvMasterBranch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvMasterBranch.Location = New System.Drawing.Point(8, 214)
-        Me.dgvMasterBranch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dgvMasterBranch.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvMasterBranch.Name = "dgvMasterBranch"
         Me.dgvMasterBranch.RowHeadersWidth = 51
         Me.dgvMasterBranch.Size = New System.Drawing.Size(611, 288)
@@ -543,14 +496,13 @@ Partial Class BankGeneralLedgerApp
         Me.gbMasterBranch.Controls.Add(Me.btnAddBranch)
         Me.gbMasterBranch.Controls.Add(Me.txtAlamat)
         Me.gbMasterBranch.Controls.Add(Me.txtBranchName)
-        Me.gbMasterBranch.Controls.Add(Me.txtMasterBranchID)
         Me.gbMasterBranch.Controls.Add(Me.Label11)
         Me.gbMasterBranch.Controls.Add(Me.Label10)
         Me.gbMasterBranch.Controls.Add(Me.Label9)
         Me.gbMasterBranch.Location = New System.Drawing.Point(8, 7)
-        Me.gbMasterBranch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbMasterBranch.Margin = New System.Windows.Forms.Padding(4)
         Me.gbMasterBranch.Name = "gbMasterBranch"
-        Me.gbMasterBranch.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbMasterBranch.Padding = New System.Windows.Forms.Padding(4)
         Me.gbMasterBranch.Size = New System.Drawing.Size(611, 199)
         Me.gbMasterBranch.TabIndex = 0
         Me.gbMasterBranch.TabStop = False
@@ -559,7 +511,7 @@ Partial Class BankGeneralLedgerApp
         'btnDeleteBranch
         '
         Me.btnDeleteBranch.Location = New System.Drawing.Point(432, 148)
-        Me.btnDeleteBranch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnDeleteBranch.Margin = New System.Windows.Forms.Padding(4)
         Me.btnDeleteBranch.Name = "btnDeleteBranch"
         Me.btnDeleteBranch.Size = New System.Drawing.Size(124, 28)
         Me.btnDeleteBranch.TabIndex = 8
@@ -569,7 +521,7 @@ Partial Class BankGeneralLedgerApp
         'btnEditBranch
         '
         Me.btnEditBranch.Location = New System.Drawing.Point(219, 148)
-        Me.btnEditBranch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnEditBranch.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEditBranch.Name = "btnEditBranch"
         Me.btnEditBranch.Size = New System.Drawing.Size(100, 28)
         Me.btnEditBranch.TabIndex = 7
@@ -579,7 +531,7 @@ Partial Class BankGeneralLedgerApp
         'btnAddBranch
         '
         Me.btnAddBranch.Location = New System.Drawing.Point(24, 148)
-        Me.btnAddBranch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAddBranch.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAddBranch.Name = "btnAddBranch"
         Me.btnAddBranch.Size = New System.Drawing.Size(100, 28)
         Me.btnAddBranch.TabIndex = 6
@@ -589,7 +541,7 @@ Partial Class BankGeneralLedgerApp
         'txtAlamat
         '
         Me.txtAlamat.Location = New System.Drawing.Point(120, 86)
-        Me.txtAlamat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtAlamat.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAlamat.Name = "txtAlamat"
         Me.txtAlamat.Size = New System.Drawing.Size(481, 22)
         Me.txtAlamat.TabIndex = 5
@@ -597,18 +549,10 @@ Partial Class BankGeneralLedgerApp
         'txtBranchName
         '
         Me.txtBranchName.Location = New System.Drawing.Point(120, 49)
-        Me.txtBranchName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtBranchName.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBranchName.Name = "txtBranchName"
         Me.txtBranchName.Size = New System.Drawing.Size(481, 22)
         Me.txtBranchName.TabIndex = 4
-        '
-        'txtMasterBranchID
-        '
-        Me.txtMasterBranchID.Location = New System.Drawing.Point(120, 16)
-        Me.txtMasterBranchID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.txtMasterBranchID.Name = "txtMasterBranchID"
-        Me.txtMasterBranchID.Size = New System.Drawing.Size(171, 22)
-        Me.txtMasterBranchID.TabIndex = 3
         '
         'Label11
         '
@@ -647,7 +591,7 @@ Partial Class BankGeneralLedgerApp
         Me.TabControl1.Controls.Add(Me.tabTransaksi)
         Me.TabControl1.Controls.Add(Me.tabLaporan)
         Me.TabControl1.Location = New System.Drawing.Point(17, 53)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(637, 542)
@@ -679,6 +623,30 @@ Partial Class BankGeneralLedgerApp
         Me.Button3.TabIndex = 20
         Me.Button3.Text = "Department"
         Me.Button3.UseVisualStyleBackColor = True
+        '
+        'cbBranchID
+        '
+        Me.cbBranchID.FormattingEnabled = True
+        Me.cbBranchID.Location = New System.Drawing.Point(157, 22)
+        Me.cbBranchID.Name = "cbBranchID"
+        Me.cbBranchID.Size = New System.Drawing.Size(202, 24)
+        Me.cbBranchID.TabIndex = 15
+        '
+        'cbLedgerID
+        '
+        Me.cbLedgerID.FormattingEnabled = True
+        Me.cbLedgerID.Location = New System.Drawing.Point(157, 81)
+        Me.cbLedgerID.Name = "cbLedgerID"
+        Me.cbLedgerID.Size = New System.Drawing.Size(202, 24)
+        Me.cbLedgerID.TabIndex = 16
+        '
+        'cbCostCenterID
+        '
+        Me.cbCostCenterID.FormattingEnabled = True
+        Me.cbCostCenterID.Location = New System.Drawing.Point(157, 113)
+        Me.cbCostCenterID.Name = "cbCostCenterID"
+        Me.cbCostCenterID.Size = New System.Drawing.Size(202, 24)
+        Me.cbCostCenterID.TabIndex = 17
         '
         'BankGeneralLedgerApp
         '
@@ -751,7 +719,6 @@ Partial Class BankGeneralLedgerApp
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents tabDataJurnal As TabPage
     Friend WithEvents btnSelanjutnya As Button
@@ -766,7 +733,6 @@ Partial Class BankGeneralLedgerApp
     Friend WithEvents btnAddBranch As Button
     Friend WithEvents txtAlamat As TextBox
     Friend WithEvents txtBranchName As TextBox
-    Friend WithEvents txtMasterBranchID As TextBox
     Friend WithEvents Label11 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents Label9 As Label
@@ -774,4 +740,7 @@ Partial Class BankGeneralLedgerApp
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
+    Friend WithEvents cbCostCenterID As ComboBox
+    Friend WithEvents cbLedgerID As ComboBox
+    Friend WithEvents cbBranchID As ComboBox
 End Class
